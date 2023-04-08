@@ -7,7 +7,7 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 
 <meta charset="ISO-8859-1">
-<title>Sujal Chavan</title>
+<title>Ankush Chavan</title>
 
 </head>
 <body>
