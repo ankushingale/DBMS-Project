@@ -1,0 +1,14 @@
+create table voter_Registration_Details
+(
+	voter_id varchar(255) primary key,
+	voter_name varchar(255),
+	voter_email varchar(255),
+	voter_adharcard varchar(255),
+	voter_birthdate varchar(255),
+	voter_age varchar(255),
+	voter_gender varchar(255),
+	voter_password varchar(255),
+	voter_phoneNo varchar(255),
+	voter_address varchar(255)
+	
+);

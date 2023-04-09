@@ -40,6 +40,8 @@
           }
         }
       </script>
+     
+     
       <style>
       body{
     background-image: url("1.jpg") !important;
@@ -49,33 +51,50 @@
     background-repeat: no-repeat;
     
 }
+
+.alert {
+  padding: 10px;
+  background-color: blue;
+  color: white;
+  border-radius: 10px
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 20px;
+  line-height: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
         .top{
             
-            padding-top: 120px;
+             padding-top: 90px;
             padding-bottom: 20px;
         }
         .box{
-            padding-bottom: 0px ;
-            padding-top: 20px;
-            min-height: 0vh;
-        }
-        .container{
-            margin-left: 20px;
-        }
+         width: 700px;	
+         margin: auto;
+         margin-top: 10px;
+         min-height: 0vh;
+              }
+      
         .submit1{
             border: none;
             border-radius: 30px;
             font-size: 15px;
             height: 45px;
             outline: none;
-            width: 760px;
+            width: 700px;
             color: black;
             background: rgba(255,255,255,0.7);
             cursor: pointer;
             transition: .3s ;
             
-            margin-right: 400px;
-            margin-left:379px ;
+            margin-right: 80px;
+            margin-left:450px ;
             margin-top: 20px;
         }
         .submit1:hover{
@@ -92,13 +111,54 @@
         margin-top: 15px;
         border: initial;
 }
+.container {
+    width: 50%;
+    float: left;
+}
+.box2{
+width:40%;
+margin: auto;
+}
+
       </style> 
  </head>
  <body>
-    <form action="">
+  </div>
+    <form action="voterregistration" method="post">
+    
+    <div>
+    
+    </div>
     <div class="top">
+    
+ </div>
         <span>Have an account?</span>
+        
         <header><b>sign up</b></header>
+        <div class="box2">
+ 
+               <% 
+   if(!session.isNew())
+	{
+		session=request.getSession();
+		String value=(String)session.getAttribute("registration_status");
+		/* System.out.println(value); */
+		
+		if(value=="true")
+		{
+			%>
+			<div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+             Voter Registered Successfully.
+            </div>
+  			<% 
+		}
+		session.removeAttribute("registration_status");
+
+	}
+%>
+        </div>
+        
     </div>
 
     <div class="box">
@@ -106,38 +166,37 @@
             <span>Have an account?</span>
             <header>sign up</header>
         </div> -->
-     <div class="container1">
+        
+     <div class="container">
  
        
        
          <div>
         <div class="input-field">
-            <input type="text" class="input" placeholder="full name" id="" required>
+            <input type="text" class="input" placeholder="full name" name="name"  id="" required>
             <i class='bx bx-envelope'></i>
         </div>
 
-        <div class="input-field">
-            <input type="email" class="input" placeholder="email" id="" required>
-            <i class='bx bx-envelope'></i>
-        </div>
+       
 
         <div class="input-field">
-            <input type="number" class="input" placeholder="Adhar_Card no" id="input-field" required>
+            <input type="number" class="input" placeholder="Adhar_Card no" name="Adhar_Card no" id="input-field" required>
             <i class='bx bx-id-card'></i>
         </div>
 
         
         <div class="input-field">
-           <input type="number" class="input" placeholder="phone no" id="input-field1" required>
+           <input type="number" class="input" placeholder="phone no" name="phone no" id="input-field1" required>
           <i class='bx bx-mobile-alt'></i> 
        </div>
       
        <div class="input-field">
         <span class="input">        
             <label class="radio-inline">
-            <input type="radio" name="optradio" style="padding-left: 200px;">  male<span style="margin-right: 70px;"></span> </label>
+            <input type="radio" value="Male" name="optradio">male
+            </label>
           <label class="radio-inline">
-            <input type="radio" name="optradio"> female<span style="margin-right:250px;"></span>
+            <input type="radio" value="female" name="optradio">female
           </label>
           
         </span>
@@ -151,33 +210,38 @@
      </div>
      <div class="container" style="padding-top: 0px;">
  
-     
+      <div class="input-field">
+            <input type="email" class="input" placeholder="email" name="email" id="" required>
+            <i class='bx bx-envelope'></i>
+        </div>
       
        <div>
-      <div class="input-field">
-          <input type="text" class="input" placeholder="Username" id="">
+     <!--  <div class="input-field">
+          <input type="text" class="input" placeholder="Username" name="Username" id="">
           <i class='bx bx-user' ></i>
       </div>
-
+ -->
       <div class="input-field">
-        <input type="Password" class="input" placeholder="enter Password" id="input-field2" required>
+        <input type="Password" class="input" placeholder="enter Password" name="Password" id="input-field2" required>
         <i class='bx bx-lock-alt'></i>
         <i class="fa fa-eye-slash" id="toggle-password2" onclick="togglePassword2()" id="ii"></i>
     </div>
 
       
-    <div class="input-field">
+    <!-- <div class="input-field">
         <input type="Password" class="input" placeholder="enter Password" id="input-field4" required>
         <i class='bx bx-lock-alt'></i>
         <i class="fa fa-eye-slash" id="toggle-password4" onclick="togglePassword4()" id="ii"></i>
-    </div>
+    </div> -->
 
      <div class="input-field">
-         <input type="date" class="input" placeholder="conform Password" id="" required>
+         <input type="date" class="input"  name="dob" id="DOB" required>
+        
          <i class='bx bx-calendar'></i>
-     </div>
+<!--          <span id = "message" style="color:red"> </span> <br><br>  
+ -->     </div>
      <div class="input-field">
-        <input type="text" class="input" placeholder="address" id="" required>
+        <input type="text" class="input" placeholder="address" name="address" id="" required>
         <i class='bx bx-home-alt'></i>
     </div>
      </div>
@@ -189,7 +253,7 @@
 
      </div>
    </div>  
-     <div class="input-field1" style="margin: 0;margin-bottom: 1000px;">
+     <div class="input-field1">
      <input type="submit" class="submit1" value="sign up" id="" required>
     </div>
    </form>
