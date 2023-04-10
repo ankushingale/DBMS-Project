@@ -92,7 +92,7 @@
             cursor: pointer;
             transition: .3s ;
             
-            margin-right: 80px;
+            margin-right:1000px;
             margin-left:450px ;
             margin-top: 20px;
         }
