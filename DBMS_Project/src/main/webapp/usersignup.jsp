@@ -92,14 +92,15 @@
             cursor: pointer;
             transition: .3s ;
             
-            margin-right:1000px;
-            margin-left:450px ;
-            margin-top: 20px;
+            margin-right:30px;
+            
+            margin-left:430px ;
+            margin-top: 20px; 
         }
         .submit1:hover{
     box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
 }
-        input[type="radio" i] {
+input[type="radio" i] {
         background-color: initial;
         cursor: default;
         appearance: auto;
@@ -114,11 +115,19 @@
     width: 50%;
     float: left;
 }
+
+.radio-inline{
+}
 .box2{
 width:40%;
 margin: auto;
 }
-
+label{
+margin-right:15px;
+}
+.radio-inline1{
+  margin-right: 150px;
+}
       </style> 
  </head>
  <body>
@@ -173,7 +182,7 @@ margin: auto;
          <div>
         <div class="input-field">
             <input type="text" class="input" placeholder="full name" name="name"  id="" required>
-            <i class='bx bx-envelope'></i>
+           <i class='bx bx-user'></i>
         </div>
 
        
@@ -194,7 +203,7 @@ margin: auto;
             <label class="radio-inline">
             <input type="radio" value="Male" name="optradio">male
             </label>
-          <label class="radio-inline">
+          <label class="radio-inline1" >
             <input type="radio" value="female" name="optradio">female
           </label>
           
