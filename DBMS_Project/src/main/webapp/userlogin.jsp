@@ -27,6 +27,24 @@ body{
     background-repeat: no-repeat;
     
 }
+
+.alert {
+  padding: 10px;
+  background-color: #f44336;
+  color: white;
+  border-radius: 10px
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 20px;
+  line-height: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 .box{
     display: flex;
     justify-content: center;
@@ -202,7 +220,27 @@ table {
 <body>
    <div class="box">
     <div class="container">
-        <form>
+        <form action="controller" method="post">
+             <% 
+   if(!session.isNew())
+	{
+		session=request.getSession();
+		String value=(String)session.getAttribute("login-status");
+		/* System.out.println(value); */
+		
+		if(value=="false")
+		{
+			%>
+			<div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+             Invalid Credentials.
+            </div>
+  			<% 
+		}
+		session.removeAttribute("registration_status");
+
+	}
+%>
         <div class="top">
         <span><label><a href="usersignup.jsp">dont Have an account?</a></label><span>
             
@@ -210,12 +248,12 @@ table {
         </div>
 <header>Login</header>
         <div class="input-field">
-            <input type="text" class="input" placeholder="Username" id="">
+            <input type="text" class="input" placeholder="Username" name="username" id="">
             <i class='bx bx-user' ></i>
         </div>
 
         <div class="input-field">
-            <input type="Password" class="input" placeholder="enter Password" id="input-field2" required>
+            <input type="Password" class="input" placeholder="enter Password" name="password" id="input-field2" required>
             <i class='bx bx-lock-alt'></i>
             <i class="fa fa-eye-slash" id="toggle-password2" onclick="togglePassword2()" id="ii"></i>
         </div>
