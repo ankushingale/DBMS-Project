@@ -17,7 +17,10 @@ body{
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    background-repeat: no-repeat;    
+    background-repeat: no-repeat;
+    
+
+    
 }
 /* SIDE BAR CSS */
 .header{
@@ -148,6 +151,7 @@ table {
     color: #fff;
 
 }
+
 /* update button */
 .btn1{
     border: none;
@@ -216,12 +220,13 @@ h1{
             <li><a href="cnadidate.jsp" target="_self"><i class='bx bx-user-circle'></i></i><p>Candidate</p></a></li>
             <li><a href="live-user.jsp" target="_self"><i class='bx bx-user-check'></i></i><p>Live users</p></a></li>
             <li><a href="partys.jsp" target="_self"><i class='bx bx-group'></i><p>Party's</p></a></li>
-            <li><a href="result.jsp"><i class='bx bx-party'></i><p>Result</p></a></li>  
+            <li><a href="result.jsp"><i class='bx bx-party'></i><p>Result</p></a></li> 
             <div class="active"></div>       
         </ul>
     </div>
 
-    <div class="heading">registrations</div>
+
+<div class="heading1">Party's</div>
     
 
     <div class="box1">
