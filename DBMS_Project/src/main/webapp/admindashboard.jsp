@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="dashboard.css">
     <title>Document</title>
     <style type="text/css">
-    *{
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -57,7 +57,7 @@ body{
 
 }
 .nav-link li a{
-    color: #fff;
+      color: #fff;
     text-decoration: none;
     padding: 10px 40px;
     display: flex;
@@ -90,6 +90,7 @@ body{
 .nav-link li a:hover{
     box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
     border-radius: 30px;
+    color: #093a96;
     background: rgba(255,255,255,0.7);
     transition: 0.100s;
 }
@@ -198,15 +199,17 @@ h1{
     text-align:center;
     font-family:'arial';
     position:absolute;
+    color:#fff;
     top:50%;
     left:55%;
     right: 0px;
+    color: white;
     transform:translateX(-50%)translateY(-50%);
-    color:a liceblue;
+    color:a #fff;
 
 }
     
-    </style>
+</style>
 
 <meta charset="ISO-8859-1">
 
@@ -219,12 +222,12 @@ h1{
             <h2 style="color: aliceblue;">count : 000</h2>
         </div>
         <ul class="nav-link">
-            <li><a href="#"><i class='bx bx-home-alt'></i><p>dashboard</p></a></li>
-            <li><a href="#"><i class='bx bx-registered'></i><p>registrations</p></a></li>
-            <li><a href="#"><i class='bx bx-user-circle'></i></i><p>candidate</p></a></li>
-            <li><a href="#"><i class='bx bx-home-alt'></i><p>dashboard</p></a></li>
-            <li><a href="#"><i class='bx bx-home-alt'></i><p>dashboard</p></a></li>
-            <li><a href="#"><i class='bx bx-home-alt'></i><p>dashboard</p></a></li> 
+             <li><a href="admindashboard.jsp" target="_self"><i class='bx bx-home-alt'></i><p>Dashboard</p></a></li>
+            <li><a href="registration.jsp" target="_self"><i class='bx bx-registered'></i><p>Registrations</p></a></li>
+            <li><a href="cnadidate.jsp" target="_self"><i class='bx bx-user-circle'></i></i><p>Candidate</p></a></li>
+            <li><a href="live-user.jsp" target="_self"><i class='bx bx-user-check'></i></i><p>Live users</p></a></li>
+            <li><a href="partys.jsp" target="_self"><i class='bx bx-group'></i><p>Party's</p></a></li>
+            <li><a href="result.jsp"><i class='bx bx-party'></i><p>Result</p></a></li> 
             <div class="active"></div>       
         </ul>
     </div>
@@ -234,182 +237,6 @@ h1{
 
     </div>
 
-    <div class="heading">registrations</div>
-    
-
-    <div class="box1">
-                         
-    <table>
-        
-        <tr>
-            <th>sr</th>
-             <th>name </th> 
-             <th>e-mail</th>
-            <th>Adhar_Card</th>
-            <th>phone no</th>
-            <th>gender</th>
-            <th>date of birth</th>
-            <th>address</th>
-            <th>update</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr> 
-    </table> 
-    
-    <div class="save-btn"><input type="button" value="save" class="btn1"></div>
-</div>
-<div class="heading1">candidate</div>
-    
-
-    <div class="box1">
-                         
-    <table>
-        
-        <tr>
-            <th>sr</th>
-             <th>name </th> 
-             <th>e-mail</th>
-            <th>Adhar_Card</th>
-            <th>phone no</th>
-            <th>gender</th>
-            <th>date of birth</th>
-            <th>address</th>
-            <th>update</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr> 
-    </table> 
-    
-    <div class="save-btn"><input type="button" value="save" class="btn1"></div>
-</div>
 
  <%
                 		if(!session.isNew())
