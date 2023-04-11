@@ -3,6 +3,7 @@ package com.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.servlet.http.HttpSession;
 
@@ -48,17 +49,41 @@ public class useroperations {
 				ps=con.prepareStatement("select * from voter_Registration_Details where voter_email=? and voter_password=?");
 				ps.setString(1,username);
 				ps.setString(2,password);
+
 				
 				rs=ps.executeQuery();
+				
+				
+				
+
+				
 			}catch (Exception e) {
 				System.out.println(e);
 			}
-			
 			
 			return rs;
 			
 		
 
 	}
+		
+		public void insert(ResultSet rs)
+		{
+			System.out.println("Inside insert");
+
+			try {
+				ps=con.prepareStatement("insert into loginstatus values(?,?,?,?)");
+				ps.setString(1,rs.getString(1));
+				ps.setString(2,rs.getString(3));
+				ps.setString(3,rs.getString(8));
+				ps.setString(4,"1");
+				System.out.println("Heklo");
+				ps.executeUpdate();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	
 }

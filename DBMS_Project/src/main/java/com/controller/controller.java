@@ -39,16 +39,22 @@ public class controller extends HttpServlet {
 		String password=request.getParameter("password");
 		HttpSession session;
 		useroperations us=new useroperations();
+		ResultSet rs=null;
+		rs=us.checkLoginDetails(username, password);
 		
-		ResultSet rs=us.checkLoginDetails(username, password);
 		
 		try {
 			if(rs.next())
 			{
+				
+
 				System.out.println("Valid details");
 				
+				us.insert(rs);
+
 				session=request.getSession();
 				session.setAttribute("login-status", "true");
+
 				response.sendRedirect("home.jsp");
 				
 			}
