@@ -251,8 +251,9 @@ table {
              Invalid Credentials.
             </div>
   			<% 
+  			session.removeAttribute("login-status");
+
 		}
-		session.removeAttribute("registration_status");
 
 	}
 %>
