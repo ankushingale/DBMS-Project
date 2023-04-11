@@ -2,6 +2,8 @@ package com.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,12 +11,13 @@ import com.model.Voterregistration;
 
 public class useroperations {
 	Connection con=null;
+	PreparedStatement ps= null;
 	public int voter_registration(Voterregistration vtr)
 	{
 		con=Dbconnection.getConnection();
 		int i=0;
 		try {
-			PreparedStatement ps=con.prepareStatement("insert into voter_registration_details values(?,?,?,?,?,?,?,?,?,?)");
+			ps=con.prepareStatement("insert into voter_registration_details values(?,?,?,?,?,?,?,?,?,?)");
 			ps.setString(1,vtr.getVoter_id());
 			ps.setString(2,vtr.getVoter_name());
 			ps.setString(3,vtr.getEmail());
@@ -37,5 +40,50 @@ public class useroperations {
 		return i;
 		
 	}
+		public ResultSet checkLoginDetails(String username,String password)
+		{
+			con=Dbconnection.getConnection();
+			System.out.println("Hello metho");
+			ResultSet rs=null;
+			try {
+				ps=con.prepareStatement("select * from voter_Registration_Details where voter_email=? and voter_password=?");
+				ps.setString(1,username);
+				ps.setString(2,password);
 
+				
+				rs=ps.executeQuery();
+				
+				
+				
+
+				
+			}catch (Exception e) {
+				System.out.println(e);
+			}
+			
+			return rs;
+			
+		
+
+	}
+		
+		public void insert(ResultSet rs)
+		{
+			System.out.println("Inside insert");
+
+			try {
+				ps=con.prepareStatement("insert into loginstatus values(?,?,?,?)");
+				ps.setString(1,rs.getString(1));
+				ps.setString(2,rs.getString(3));
+				ps.setString(3,rs.getString(8));
+				ps.setString(4,"1");
+				System.out.println("Heklo");
+				ps.executeUpdate();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	
 }
