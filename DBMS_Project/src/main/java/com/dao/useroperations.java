@@ -12,6 +12,8 @@ import com.model.Voterregistration;
 public class useroperations {
 	Connection con=null;
 	PreparedStatement ps= null;
+	ResultSet rs=null;
+	int i=0;
 	public int voter_registration(Voterregistration vtr)
 	{
 		con=Dbconnection.getConnection();
@@ -43,7 +45,8 @@ public class useroperations {
 		public ResultSet checkLoginDetails(String username,String password)
 		{
 			con=Dbconnection.getConnection();
-			System.out.println("Hello metho");
+						
+//			System.out.println("Hello metho");
 			ResultSet rs=null;
 			try {
 				ps=con.prepareStatement("select * from voter_Registration_Details where voter_email=? and voter_password=?");
@@ -55,8 +58,6 @@ public class useroperations {
 				
 				
 				
-
-				
 			}catch (Exception e) {
 				System.out.println(e);
 			}
@@ -67,23 +68,70 @@ public class useroperations {
 
 	}
 		
-		public void insert(ResultSet rs)
+		public int insert(ResultSet rs,String username) throws SQLException
 		{
-			System.out.println("Inside insert");
+			
+			ResultSet rs1=user_Login_Already(username);
 
+			if(rs1.next())
+			{
+				i=2;
+			}
+			else
+			{
+//				System.out.println("Inside insert");
+
+				try {
+					ps=con.prepareStatement("insert into loginstatus values(?,?,?,?)");
+					ps.setString(1,rs.getString(1));
+					ps.setString(2,rs.getString(3));
+					ps.setString(3,rs.getString(8));
+					ps.setString(4,"1");
+//					System.out.println("Heklo");
+					i=ps.executeUpdate();
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			return i;
+			
+		}
+		
+		
+		public ResultSet displayVoters(String username)
+		{
+			con=Dbconnection.getConnection();
 			try {
-				ps=con.prepareStatement("insert into loginstatus values(?,?,?,?)");
-				ps.setString(1,rs.getString(1));
-				ps.setString(2,rs.getString(3));
-				ps.setString(3,rs.getString(8));
-				ps.setString(4,"1");
-				System.out.println("Heklo");
-				ps.executeUpdate();
+				ps=con.prepareStatement("select * from voter_Registration_Details where voter_email=?");
+				ps.setString(1,username);
+				rs=ps.executeQuery();
+				
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			return rs;
+		}
+		
+		public ResultSet user_Login_Already(String username)
+		{
+			try {
+				ps=con.prepareStatement("select * from loginstatus where voter_email=?");
+				ps.setString(1,username);
+				rs=ps.executeQuery();
+				
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return rs;
 		}
 	
 }

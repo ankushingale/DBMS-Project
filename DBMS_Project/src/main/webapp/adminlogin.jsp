@@ -235,9 +235,22 @@ table {
    if(!session.isNew())
 	{
 		session=request.getSession();
+		String login=(String)session.getAttribute("login-first");
+
 		String value=(String)session.getAttribute("admin_login_status");
 		/* System.out.println(value); */
-		
+		if(login=="true")
+		{
+			%>
+			<div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+             Admin Login required.
+            </div>
+  			<% 
+
+		}
+			session.removeAttribute("login-first");
+
 		if(value=="false")
 		{
 			%>

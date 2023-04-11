@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.dao.adminoperations;
 import com.dao.useroperations;
 import com.model.Voterregistration;
 
@@ -63,32 +65,43 @@ public class voterregistration extends HttpServlet {
 //		String voter_age=request.getParameter("age");
 		String voter_address=request.getParameter("address");
 		
-		System.out.println(voter_id);
-		System.out.println(voter_name);
-		System.out.println(voter_email);
-		System.out.println(voter_adharNo);
-		System.out.println(voter_phoneNO);
-		System.out.println(voter_gender);
-//		System.out.println(voter_username);
-		System.out.println(voter_password);
-		System.out.println(voter_dob);
-		System.out.println(voter_address);
-//		System.out.println(voter_id);
-
+		/*
+		 * System.out.println(voter_id); System.out.println(voter_name);
+		 * System.out.println(voter_email); System.out.println(voter_adharNo);
+		 * System.out.println(voter_phoneNO); System.out.println(voter_gender); //
+		 * System.out.println(voter_username); System.out.println(voter_password);
+		 * System.out.println(voter_dob); System.out.println(voter_address); //
+		 * System.out.println(voter_id);
+		 */
 		
-		
-
-		Voterregistration vtr=new Voterregistration(voter_id, voter_name, voter_email, voter_adharNo, voter_dob, "45", voter_gender, voter_password, voter_phoneNO, voter_address);
 		useroperations us=new useroperations();
-		int cnt=us.voter_registration(vtr);
+		ResultSet rs=us.displayVoters(voter_email);
+		try {
+			if(rs.next())
+			{
+				
+				HttpSession session=request.getSession();
+				session.setAttribute("already-registered", "true");
+				response.sendRedirect("usersignup.jsp");
+			}
+			else
+			{
+				Voterregistration vtr=new Voterregistration(voter_id, voter_name, voter_email, voter_adharNo, voter_dob, "45", voter_gender, voter_password, voter_phoneNO, voter_address);
+				int cnt=us.voter_registration(vtr);
+				
+				if(cnt>0)
+				{
+					HttpSession session=request.getSession();
+					
+					session.setAttribute("registration_status","true");
+					response.sendRedirect("usersignup.jsp");
+				}
+			}
+		}catch (Exception e) {
+System.out.println(e);
+}
 		
-		if(cnt>0)
-		{
-			HttpSession session=request.getSession();
-			
-			session.setAttribute("registration_status","true");
-			response.sendRedirect("usersignup.jsp");
-		}
+		
 		
 		
 	}

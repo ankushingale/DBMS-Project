@@ -1,3 +1,5 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="com.dao.adminoperations"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -206,6 +208,9 @@ h1{
 
 </head>
 <body>
+
+
+	
     <div class="header">
         <div class="side-nav">
             <h2 style="color: aliceblue;">count : 000</h2>
@@ -227,7 +232,7 @@ h1{
     <div class="box1">
                          
     <table>
-        
+       
         <tr>
             <th>sr</th>
             <th>name </th> 
@@ -239,7 +244,30 @@ h1{
             <th>address</th>
             <th>update</th>
         </tr>
+         <%
+        adminoperations aop=new adminoperations();
+        ResultSet rs= aop.displayvoters();
+    	int cnt=1;
+        while(rs.next())
+        {
+        	%>
+      	
         <tr>
+            <td><%=cnt %></td>
+            <td><%=rs.getString(2) %></td>
+            <td><%=rs.getString(3) %></td>
+            <td><%=rs.getString(4) %></td>
+            <td><%=rs.getString(9) %></td>
+            <td><%=rs.getString(7) %></td>
+            <td><%=rs.getString(5) %></td>
+            <td><%=rs.getString(10) %></td>
+            <td><input type="button" value="update" class="btn1"></td>
+        </tr>
+        <% 
+        cnt++;
+        }
+        %>
+       <!--  <tr>
             <td>1</td>
             <td>sujal chavan</td>
             <td>sujal@gmail.com</td>
@@ -293,18 +321,7 @@ h1{
             <td>31-1-2003</td>
             <td>nashik</td>
             <td><input type="button" value="update" class="btn1"></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr> 
+        </tr>  -->
     </table> 
     
     <div class="save-btn"><input type="button" value="save" class="btn1"></div>

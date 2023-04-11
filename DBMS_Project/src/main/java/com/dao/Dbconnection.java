@@ -9,8 +9,8 @@ public class Dbconnection {
 		Connection con=null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/OnlineVotingSystem_Project?characterEncoding=utf8","root","sujal.1018.");
-			System.out.println("Connection :"+con);	
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/OnlineVotingSystem_Project?characterEncoding=utf8","root","mysqlroot");
+//			System.out.println("Connection :"+con);	
 
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block

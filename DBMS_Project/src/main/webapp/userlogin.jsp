@@ -225,8 +225,23 @@ table {
    if(!session.isNew())
 	{
 		session=request.getSession();
+/* 		String admin_login=(String)session.getAttribute("username");
+ */		String login_value=(String)session.getAttribute("already-login-status");
 		String value=(String)session.getAttribute("login-status");
 		/* System.out.println(value); */
+		
+		
+		if(login_value=="true")
+		{
+			%>
+			<div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+             user is already login.....please logout from previous session..!!.
+            </div>
+  			<% 
+  			session.removeAttribute("already-login-status");
+
+		}
 		
 		if(value=="false")
 		{

@@ -57,6 +57,12 @@
   color: white;
   border-radius: 10px
 }
+.alert1 {
+  padding: 10px;
+  background-color: red;
+  color: white;
+  border-radius: 10px
+}
 
 .closebtn {
   margin-left: 15px;
@@ -149,9 +155,20 @@ margin-right:15px;
    if(!session.isNew())
 	{
 		session=request.getSession();
+		String registered_user=(String)session.getAttribute("already-registered");
 		String value=(String)session.getAttribute("registration_status");
 		/* System.out.println(value); */
-		
+		if(registered_user=="true")
+		{
+			%>
+			<div class="alert1">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+             Voter is already Registered.
+            </div>
+  			<% 
+  			session.removeAttribute("already-registered");
+
+		}
 		if(value=="true")
 		{
 			%>

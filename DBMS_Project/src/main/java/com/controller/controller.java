@@ -42,20 +42,31 @@ public class controller extends HttpServlet {
 		ResultSet rs=null;
 		rs=us.checkLoginDetails(username, password);
 		
-		
+
 		try {
 			if(rs.next())
 			{
 				
 
-				System.out.println("Valid details");
+//				System.out.println("Valid details");
 				
-				us.insert(rs);
+				int i=us.insert(rs,username);
 
-				session=request.getSession();
-				session.setAttribute("login-status", "true");
+				if(i<2)
+				{
+					session=request.getSession();
+					session.setAttribute("login-status", "true");
 
-				response.sendRedirect("home.jsp");
+					response.sendRedirect("home.jsp");
+				}
+				else
+				{
+					session=request.getSession();
+					session.setAttribute("already-login-status", "true");
+
+					response.sendRedirect("userlogin.jsp");
+				}
+				
 				
 			}
 			else

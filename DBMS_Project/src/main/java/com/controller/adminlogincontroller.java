@@ -34,10 +34,13 @@ public class adminlogincontroller extends HttpServlet {
 		
 		String admin_username=request.getParameter("username");
 		String admin_password=request.getParameter("password");
-		
+
 		if(admin_username.equals("admin") && admin_password.equals("admin"))
 		{
+			session.setAttribute("username", admin_username);
 			session.setAttribute("admin_login_status", "true");
+			session.setAttribute("username", admin_username);
+
 			response.sendRedirect("admindashboard.jsp");
 		}
 		else
