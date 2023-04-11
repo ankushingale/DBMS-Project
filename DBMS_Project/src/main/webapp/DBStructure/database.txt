@@ -61,12 +61,11 @@ DELETE FROM loginstatus where status=0/
 
 
 delimiter /
-    Create trigger after_update
+    Create trigger after_insert
     AFTER INSERT on loginstatus for each row
     begin
-    SET status=0,
-    DELETE from loginstatus where status=0;
-    end;
+    update loginstatus set status=replace(status,'1','0');
+    end ;
     /
 
 
