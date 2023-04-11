@@ -12,3 +12,65 @@ create table voter_Registration_Details
 	voter_address varchar(255)
 	
 );
+
+create table Loginstatus
+( 
+  voter_id varchar(255),
+  voter_email varchar(255),
+  voter_password varchar(255),
+  status varchar(255)
+);
+
+
+mysql> delimiter /
+mysql> create trigger table11trigger after insert on voter_registration_details
+    -> for each row
+    -> begin
+    -> insert into loginstatus(voter_id,voter_email,voter_password) values(new.voter_id,new.voter_email,new.voter_password);
+    -> end/
+    
+    
+
+delimiter /
+create trigger afetr_insert
+AFTER INSERT on voter_Registration_Details for each
+row
+begin
+UPDATE EMPLOYEE_ SET 
+status=0;
+end;
+/
+
+
+
+
+Delimiter //
+Create trigger after_update
+AFTER INSERT on loginstatus for each row
+Begin
+INSERT INTO loginstatus
+SET status=0,
+voter_id = OLD.voter_id,
+voter_email = OLD.voter_email,
+voter_password = OLD.voter_password,
+end //
+
+DELETE FROM loginstatus where status=0/
+
+
+
+
+delimiter /
+    Create trigger after_insert
+    AFTER INSERT on loginstatus for each row
+    begin
+    update loginstatus set status=replace(status,'1','0');
+    end ;
+    /
+
+
+
+
+
+
+alter table voter_registration_details add column status varchar(255)values(int 1) after voter_address;
