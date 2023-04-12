@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dao.adminoperations;
+import com.model.CandidateModel1;
 
 /**
  * Servlet implementation class addcandidate
@@ -27,17 +28,7 @@ public class addcandidate extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @param cphone 
-	 * @param cage 
-	 * @param cgender 
-	 * @param caddress 
-	 * @param address 
-	 * @param optradio 
-	 * @param dob 
-	 * @param phone_no 
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response,String address, String optradio, String dob, String phone_no) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
