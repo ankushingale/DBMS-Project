@@ -7,13 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/action_page.php">
+<form action="addpartycontroller">
   <label for="lname">party name</label><br>
-  <input type="text" id="lname" name="lname"><br><br>
+  <input type="text" id="lname" name="pname"><br><br>
    <label for="fname">partyleader</label><br>
-  <input type="text" id="fname" name="fname"><br>
+  <input type="text" id="fname" name="pleader"><br>
   <label for="lname">ptype</label><br>
-  <input type="text" id="lname" name="lname"><br><br>
+  <input type="text" id="lname" name="ptype"><br><br>
   <input type="submit" value="Submit">
 </form> 
 </body>

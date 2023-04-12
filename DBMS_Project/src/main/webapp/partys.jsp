@@ -1,3 +1,5 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="com.dao.adminoperations"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -252,95 +254,40 @@ h1{
         
         <tr>
             <th>sr</th>
-            <th>name </th> 
-            <th>e-mail</th>
-            <th>Adhar_Card</th>
-            <th>phone no</th>
-            <th>gender</th>
-            <th>date of birth</th>
-            <th>address</th>
-            <th>update</th>
-            <th>Delete</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-             <td><input type="button" value="remove" class="btn2"></td>
- 
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-            <td><input type="button" value="remove" class="btn2"></td>
-
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-             <td><input type="button" value="remove" class="btn2"></td>
- 
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-            <td><input type="button" value="remove" class="btn2"></td>
-        
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-            <td><input type="button" value="remove" class="btn2"></td>
+            <th>party id </th> 
+            <th>party name</th>
+            <th>party leader</th>
+            <th>party type</th>
+			<th>Action</th>
+            <th>Action</th>
+            
+            
             
         </tr>
+                <%
+        	adminoperations aop=new adminoperations();
+        	ResultSet rs=aop.displayParties();
+        	int cnt=1;
+        	while(rs.next())
+        	{	
+        %>
+        
         <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
+            <td><%=cnt%></td>
+            <td><%=rs.getString(1)%></td>
+            <td><%=rs.getString(2)%></td>
+            <td><%=rs.getString(3)%></td>
+            <td><%=rs.getString(4)%></td>
+            
             <td><input type="button" value="update" class="btn1"></td>
-            <td><input type="button" value="remove" class="btn2"></td>
-
-        </tr> 
+             <td><a href="deleteparty?party_id=<%=rs.getString(1)%>"><input type="button" value="remove" class="btn2"></a></td>
+ 
+        </tr>
+        <%
+        	}
+            %>
+       
     </table> 
     
-    <div class="save-btn"><a href="home.jsp"><input type="submit" value="Add party" class="btn1"></a></div>
+    <div class="save-btn"><a href="partyform.jsp"><input type="submit" value="Add party" class="btn1"></a></div>
 </div>
