@@ -326,6 +326,8 @@ rect[Attributes Style] {
             <td><input type="button" value="update" class="btn1"></td>
         </tr> 
     </table> 
-    
-    <div class="save-btn"><input type="button" value="save" class="btn1"></div>
+    <div class="result-btn">
+    <div class="save-btn"><input type="button" value="download pdf" class="btn1"></div>
+    <div class="save-btn"><input type="button" value="download excel" class="btn1"></div>
+    </div> 
 </div>

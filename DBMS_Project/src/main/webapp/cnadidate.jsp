@@ -89,6 +89,7 @@ body{
     color: #093a96;
     background: rgba(255,255,255,0.7);
     transition: 0.100s;
+    width:200px;
 }
 
 
@@ -344,5 +345,5 @@ h1{
         </tr> 
     </table> 
     
-    <div class="save-btn"><a href="home.jsp"> <input type="submit" value="Add Candidate" class="btn1"></a></div>
+    <div class="save-btn"><a href="candidate-sign-up.jsp"> <input type="submit" value="Add Candidate" class="btn1"></a></div>
 </div>
