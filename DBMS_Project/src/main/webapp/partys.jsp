@@ -1,3 +1,5 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="com.dao.adminoperations"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -167,7 +169,24 @@ table {
     transition: .3s ;
 }
 
+.btn2{
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    height: 40px;
+    outline: none;
+    width: 100%;
+    color: black;
+    background: rgba(255,255,255,0.7);
+    cursor: pointer;
+    transition: .3s ;
+}
+
 .btn1:hover{
+    box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+}
+
+.btn2:hover{
     box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
 }
 
@@ -236,82 +255,40 @@ h1{
         
         <tr>
             <th>sr</th>
-            <th>name </th> 
-            <th>e-mail</th>
-            <th>Adhar_Card</th>
-            <th>phone no</th>
-            <th>gender</th>
-            <th>date of birth</th>
-            <th>address</th>
-            <th>update</th>
+            <th>party id </th> 
+            <th>party name</th>
+            <th>party leader</th>
+            <th>party type</th>
+			<th>Action</th>
+            <th>Action</th>
+            
+            
+            
         </tr>
+                <%
+        	adminoperations aop=new adminoperations();
+        	ResultSet rs=aop.displayParties();
+        	int cnt=1;
+        	while(rs.next())
+        	{	
+        %>
+        
         <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
+            <td><%=cnt%></td>
+            <td><%=rs.getString(1)%></td>
+            <td><%=rs.getString(2)%></td>
+            <td><%=rs.getString(3)%></td>
+            <td><%=rs.getString(4)%></td>
+            
             <td><input type="button" value="update" class="btn1"></td>
+             <td><a href="deleteparty?party_id=<%=rs.getString(1)%>"><input type="button" value="remove" class="btn2"></a></td>
+ 
         </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr> 
+        <%
+        	}
+            %>
+       
     </table> 
     
-    <div class="save-btn"><input type="button" value="save" class="btn1"></div>
+    <div class="save-btn"><a href="partyform.jsp"><input type="submit" value="Add party" class="btn1"></a></div>
 </div>

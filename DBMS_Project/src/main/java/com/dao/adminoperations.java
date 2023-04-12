@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.model.partymodel;
+
 public class adminoperations {
 	
 	PreparedStatement ps=null;
@@ -44,6 +46,66 @@ public class adminoperations {
 		}
 		
 		return rs;
+		
+	}
+	
+	public int addparty(partymodel pm)
+	{
+		int i=0;
+		Connection con= Dbconnection.getConnection();
+		
+		try {
+			PreparedStatement ps=con.prepareStatement("insert into parties values(?,?,?,?)");
+			ps.setString(1,pm.getParty_id());
+			ps.setString(2,pm.getParty_name());
+			ps.setString(3,pm.getParty_leader());
+			ps.setString(4,pm.getParty_type());
+			
+			 i=ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return i;
+	}
+	
+	public ResultSet displayParties()
+	{
+		Connection con= Dbconnection.getConnection();
+		
+		String query="select * from parties";
+		
+		try {
+			ps=con.prepareStatement(query);
+			
+			rs=ps.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return rs;
+	}
+	
+	public int deleteParty(String party_id)
+	{
+		Connection con=Dbconnection.getConnection();
+		System.out.println("Inside dlete");
+		int i=0;
+		try {
+			PreparedStatement ps=con.prepareStatement("delete from parties where p_id=?");
+			ps.setString(1, party_id);
+			i = ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return i;
+		
+		
+		
 		
 	}
 
