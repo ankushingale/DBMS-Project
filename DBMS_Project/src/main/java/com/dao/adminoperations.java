@@ -52,22 +52,56 @@ public class adminoperations {
 	public int addparty(partymodel pm)
 	{
 		int i=0;
+
+		ResultSet rs=checkParty(pm);
+		try {
+			if(rs.next())
+			{
+				System.out.println("Record already present");
+			}
+			else
+			{
+				Connection con= Dbconnection.getConnection();
+				
+				try {
+					PreparedStatement ps=con.prepareStatement("insert into parties values(?,?,?,?)");
+					ps.setString(1,pm.getParty_id());
+					ps.setString(2,pm.getParty_name());
+					ps.setString(3,pm.getParty_leader());
+					ps.setString(4,pm.getParty_type());
+					
+					 i=ps.executeUpdate();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return i;
+
+	}
+	
+	public ResultSet checkParty(partymodel pm)
+	{
+
 		Connection con= Dbconnection.getConnection();
 		
+		String query="select * from parties where p_name=?";
+		
 		try {
-			PreparedStatement ps=con.prepareStatement("insert into parties values(?,?,?,?)");
-			ps.setString(1,pm.getParty_id());
-			ps.setString(2,pm.getParty_name());
-			ps.setString(3,pm.getParty_leader());
-			ps.setString(4,pm.getParty_type());
-			
-			 i=ps.executeUpdate();
+			ps=con.prepareStatement(query);
+			ps.setString(1,pm.getParty_name());
+			rs=ps.executeQuery();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return i;
+		return rs;
 	}
 	
 	public ResultSet displayParties()

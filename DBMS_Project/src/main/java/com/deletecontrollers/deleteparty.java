@@ -6,8 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dao.adminoperations;
+import com.mysql.cj.Session;
 
 /**
  * Servlet implementation class deleteparty
@@ -36,7 +38,10 @@ public class deleteparty extends HttpServlet {
 		int i=aop.deleteParty(party_id);
 		if(i>0)
 		{
-			System.out.println("Record deleted");
+			HttpSession session=request.getSession();
+			session.setAttribute("delete-success", "true");
+			response.sendRedirect("partys.jsp");
+			
 		}
 	}
 
