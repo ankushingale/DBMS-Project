@@ -27,7 +27,7 @@ body{
 /* SIDE BAR CSS */
 .header{
     position: fixed;
-    width: 100%;
+    width: 0%;
     height: 100vh;
    
     /* background:pink;*/
@@ -90,6 +90,7 @@ body{
     color: #093a96;
     background: rgba(255,255,255,0.7);
     transition: 0.100s;
+    width: 200px;
 }
 
 
