@@ -90,6 +90,7 @@ body{
     color: #093a96;
     background: rgba(255,255,255,0.7);
     transition: 0.100s;
+    width:200px;
 }
 
 @media only screen and (max-width:600px) {

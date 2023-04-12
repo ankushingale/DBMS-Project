@@ -441,8 +441,8 @@ label {
             <h2 style="color: aliceblue;">count : 000</h2>
         </div>
         <ul class="nav-link">
-             <li><a href="#" target="_self"><i class='bx bx-home-alt'></i><p>Dashboard</p></a></li>
-            <li><a href="#" target="_self"><i class='bx bx-registered'></i><p>Registrations</p></a></li>
+             <li><a href="admindashboard.jsp" target="_self"><i class='bx bx-home-alt'></i><p>Dashboard</p></a></li>
+            <li><a href="registration.jsp" target="_self"><i class='bx bx-registered'></i><p>Registrations</p></a></li>
             <li><a href="cnadidate.jsp" target="_self"><i class='bx bx-user-circle'></i></i><p>Candidate</p></a></li>
             <li><a href="live-user.jsp" target="_self"><i class='bx bx-user-check'></i></i><p>Live_users</p></a></li>
             <li><a href="partys.jsp" target="_self"><i class='bx bx-group'></i><p>Party's</p></a></li>
