@@ -454,7 +454,7 @@ label {
 
     <div class="box">
  
-        <form action="voterregistration" method="post">
+        <form action="home.jsp" method="post">
     
             <div>
             
@@ -489,13 +489,13 @@ label {
                
         
                 <div class="input-field">
-                    <input type="number" class="input" placeholder="Adhar_Card no" name="Adhar_Card no" id="input-field" required>
+                    <input type="number" class="input" placeholder="Adhar_Card no" name="Adhar_Card_no" id="input-field" required>
                     <i class='bx bx-id-card' id="ii"></i>
                 </div>
         
                 
                 <div class="input-field">
-                   <input type="number" class="input" placeholder="phone no" name="phone no" id="input-field1" required>
+                   <input type="number" class="input" placeholder="phone no" name="phone_no" id="input-field1" required>
                   <i class='bx bx-mobile-alt' id="ii"></i> 
                </div>
               
