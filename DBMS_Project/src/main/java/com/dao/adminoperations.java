@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-
+import com.model.CandidateModel1;
 import com.model.partymodel;
 
 public class adminoperations {
@@ -150,5 +150,104 @@ public class adminoperations {
 		
 		
 	}
+	public int addcandidate(CandidateModel1 cm12)
+	{
+		int i=0;
 
+		ResultSet rs=checkCandidate(cm12);
+		try {
+			if(rs.next())
+			{
+				System.out.println("Record already present");
+			}
+			else
+			{
+				Connection con= Dbconnection.getConnection();
+				
+				try {
+					PreparedStatement ps=con.prepareStatement("insert into candidate values(?,?,?,?,?,?,?,?)");
+					ps.setString(1,cm12.getCandidate_email());
+					ps.setString(2,cm12.getCandidate_name());
+					ps.setString(3,cm12.getCandidate_aadhar());
+					ps.setString(4,cm12.getCandidate_party());
+					ps.setString(4,cm12.getCandidate_phone());
+					ps.setString(4,cm12.getCandidate_age());
+					ps.setString(4,cm12.getCandidate_gender());
+					ps.setString(4,cm12.getCandidate_address());
+					
+					
+					 i=ps.executeUpdate();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return i;
+
+	}
+	public ResultSet checkCandidate(CandidateModel1 cm12)
+	{
+
+		Connection con= Dbconnection.getConnection();
+		
+		String query="select * from candidates where name=?";
+		
+		try {
+			ps=con.prepareStatement(query);
+			ps.setString(1,cm12.getCandidate_name());
+			rs=ps.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return rs;
+	}
+	public ResultSet displayCandidates()
+	{
+		Connection con= Dbconnection.getConnection();
+		
+		String query="select * from candidates";
+		
+		try {
+			ps=con.prepareStatement(query);
+			
+			rs=ps.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return rs;
+	}
+	public int deleteCandidate(String candidate_email)
+	{
+		Connection con=Dbconnection.getConnection();
+		System.out.println("Inside dlete");
+		int i=0;
+		try {
+			PreparedStatement ps=con.prepareStatement("delete from candidate where email=?");
+			ps.setString(1, candidate_email);
+			i = ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return i;
+		
+		
+		
+		
+	}
+
+	
+	
+
+	
 }

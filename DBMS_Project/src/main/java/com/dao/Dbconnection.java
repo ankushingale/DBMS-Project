@@ -10,6 +10,7 @@ public class Dbconnection {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/OnlineVotingSystem_Project?characterEncoding=utf8","root","mysqlroot");
+
 		
 
 		} catch (ClassNotFoundException | SQLException e) {

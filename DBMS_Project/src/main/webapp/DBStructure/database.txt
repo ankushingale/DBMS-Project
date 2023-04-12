@@ -23,12 +23,17 @@ create table Loginstatus
 
 
 
-create table politicians
+create table candidates
 ( 
-politician_id varchar(255) primary key,
-politician_name varchar(255),
-politician_age varchar(255),
-politicianvotecount varchar(255)
+candidate_email varchar(255) primary key,
+candidate_name varchar(255),
+candidate_Aadhar varchar(255),
+candidate_party varchar(255),
+candidate_phone varchar(255),
+candidate_age varchar(255),
+candidate_gender varchar(255),
+candidate_address varchar(255)
+
 );
 
 

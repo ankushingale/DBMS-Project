@@ -318,8 +318,9 @@ h1{
 			<td><%=rs.getString(5)%></td>
 			<td><%=rs.getString(7)%></td>
             
+                   
             
-            <td><input type="button" value="update" class="btn1"></td>
+            <td><a href="models/partyupdatemodel.jsp" class="cta" data-target="#mymodel" data-toggle="modal"><input type="button" value="update" class="btn1"></a></td>
              <td><a href="deleteparty?party_id=<%=rs.getString(1)%>"><input type="button" value="remove" class="btn2"></a></td>
  
         </tr>
