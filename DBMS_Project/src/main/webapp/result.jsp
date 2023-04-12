@@ -13,6 +13,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body{
     background-image: url("1.jpg");
     background-size: cover;
