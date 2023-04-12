@@ -6,6 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" />
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+        <script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js
+"></script>
     <link rel="stylesheet" href="dashboard.css">
     <title>Document</title>
     <style type="text/css">
@@ -249,7 +255,45 @@ h1{
     
 
     <div class="box1">
-                         
+             <% 
+   
+   if(!session.isNew())
+	{
+		session=request.getSession();
+		String delete_value=(String)session.getAttribute("delete-success");
+		
+		 System.out.println(delete_value); 
+
+
+		/* System.out.println(value); */
+		if(delete_value=="true")
+		{
+			 System.out.println("inside swalfire script"); 
+
+			%>
+			
+							<script type="text/javascript">
+		
+     						Swal.fire({
+       						//  position: 'top-end',
+        					icon: 'success',
+/*         					title:'Oops..!!',
+ */        					text: 'party deleted Successfully',
+/*         					showConfirmButton: true,
+ */        						
+      					})
+      					
+      					
+  
+   							</script>
+   							
+  			<% 
+
+		}
+	}
+ 			session.removeAttribute("delete-success");
+
+           %>              
     <table>
         
         <tr>
