@@ -268,7 +268,7 @@ h1{
        						//  position: 'top-end',
         					icon: 'success',
 /*         					title:'Oops..!!',
- */        					text: 'Admin deleted Successfully',
+ */        					text: 'party deleted Successfully',
 /*         					showConfirmButton: true,
  */        						
       					})
