@@ -25,7 +25,7 @@ body{
 /* SIDE BAR CSS */
 .header{
     position: fixed;
-    width: 100%;
+    width: 0%;
     height: 100vh;
    
     /* background:pink;*/
@@ -166,7 +166,24 @@ table {
     transition: .3s ;
 }
 
+.btn2{
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    height: 40px;
+    outline: none;
+    width: 100%;
+    color: black;
+    background: rgba(255,255,255,0.7);
+    cursor: pointer;
+    transition: .3s ;
+}
+
 .btn1:hover{
+    box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+}
+
+.btn2:hover{
     box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
 }
 
@@ -243,6 +260,7 @@ h1{
             <th>date of birth</th>
             <th>address</th>
             <th>update</th>
+            <th>Delete</th>
         </tr>
         <tr>
             <td>1</td>
@@ -254,6 +272,8 @@ h1{
             <td>31-1-2003</td>
             <td>nashik</td>
             <td><input type="button" value="update" class="btn1"></td>
+             <td><input type="button" value="remove" class="btn2"></td>
+ 
         </tr>
         <tr>
             <td>1</td>
@@ -265,6 +285,8 @@ h1{
             <td>31-1-2003</td>
             <td>nashik</td>
             <td><input type="button" value="update" class="btn1"></td>
+            <td><input type="button" value="remove" class="btn2"></td>
+
         </tr>
         <tr>
             <td>1</td>
@@ -276,6 +298,8 @@ h1{
             <td>31-1-2003</td>
             <td>nashik</td>
             <td><input type="button" value="update" class="btn1"></td>
+             <td><input type="button" value="remove" class="btn2"></td>
+ 
         </tr>
         <tr>
             <td>1</td>
@@ -287,6 +311,8 @@ h1{
             <td>31-1-2003</td>
             <td>nashik</td>
             <td><input type="button" value="update" class="btn1"></td>
+            <td><input type="button" value="remove" class="btn2"></td>
+        
         </tr>
         <tr>
             <td>1</td>
@@ -298,6 +324,8 @@ h1{
             <td>31-1-2003</td>
             <td>nashik</td>
             <td><input type="button" value="update" class="btn1"></td>
+            <td><input type="button" value="remove" class="btn2"></td>
+            
         </tr>
         <tr>
             <td>1</td>
@@ -309,8 +337,10 @@ h1{
             <td>31-1-2003</td>
             <td>nashik</td>
             <td><input type="button" value="update" class="btn1"></td>
+            <td><input type="button" value="remove" class="btn2"></td>
+
         </tr> 
     </table> 
     
-    <div class="save-btn"><input type="button" value="save" class="btn1"></div>
+    <div class="save-btn"><a href="home.jsp"><input type="submit" value="Add party" class="btn1"></a></div>
 </div>
