@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dao.adminoperations;
+import com.model.partymodel;
+
 /**
  * Servlet implementation class updateparty
  */
@@ -27,8 +30,29 @@ public class updateparty extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("inside servlet");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String pid=request.getParameter("party_id");
+		String pname=request.getParameter("pname");
+		String pleader=request.getParameter("pleader");
+		String ptype=request.getParameter("ptypr");
+		String members=request.getParameter("activemembers");
+		String esdate=request.getParameter("estade");
+		String head=request.getParameter("head");
 		
+		System.out.println(pid);
+		
+		partymodel pm=new partymodel(pid, pname, pleader, ptype, members, esdate, head);
+		System.out.println(pm.getParty_id());
+		adminoperations aop=new adminoperations();
+		aop.insertupdatedparty(pm);
+
+        
+        
+        
+        
+        
+        
 	}
 
 	/**

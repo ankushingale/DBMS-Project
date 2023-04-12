@@ -71,8 +71,8 @@ public class adminoperations {
 					ps.setString(2,pm.getParty_name());
 					ps.setString(3,pm.getParty_leader());
 					ps.setString(4,pm.getParty_type());
-					ps.setString(6,pm.getParty_activemambers());
-					ps.setString(5,pm.getParty_estdate());
+					ps.setString(5,pm.getParty_activemambers());
+					ps.setString(6,pm.getParty_estdate());
 					ps.setString(7,pm.getParty_headquarter());
 
 					
@@ -246,8 +246,51 @@ public class adminoperations {
 		
 	}
 
+	public ResultSet displayPartiesFrompid(String party_id)
+	{
+		Connection con= Dbconnection.getConnection();
+		
+		
+		try {
+			PreparedStatement ps=con.prepareStatement("select * from parties where p_id=?");
+			ps.setString(1, party_id);
+			rs=ps.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return rs;
+	}
 	
 	
+	public void insertupdatedparty(partymodel pm)
+	{
+		
+		addparty(pm);
+		System.out.println("inside insertupdatedparty");
+		Connection con=Dbconnection.getConnection();
+		
+		try {
+			PreparedStatement ps=con.prepareStatement("update parties set p_id=?,p_name=?,p_leader=?,p_type=?,active_members=?,est_date=?,Head_quarters=? where p_id=?" );
+			
+			System.out.println(pm.getParty_name());
+			
+			ps.setString(1,pm.getParty_id());
+			ps.setString(2,pm.getParty_name());
+			ps.setString(3,pm.getParty_leader());
+			ps.setString(4,pm.getParty_type());
+			ps.setString(5,pm.getParty_activemambers());
+			ps.setString(6,pm.getParty_estdate());
+			ps.setString(7,pm.getParty_headquarter());
+			ps.setString(8,pm.getParty_id());
+			
+			int i=ps.executeUpdate();
+
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 
 	
 }
