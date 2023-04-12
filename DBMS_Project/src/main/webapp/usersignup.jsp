@@ -137,7 +137,7 @@ margin-right:15px;
       </style> 
  </head>
  <body>
-  </div>
+  
     <form action="voterregistration" method="post">
     
     <div>
