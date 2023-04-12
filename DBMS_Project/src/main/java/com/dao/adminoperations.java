@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
+
 import com.model.partymodel;
 
 public class adminoperations {
@@ -51,24 +53,28 @@ public class adminoperations {
 	
 	public int addparty(partymodel pm)
 	{
-		int i=0;
+		int i=1;
 
 		ResultSet rs=checkParty(pm);
 		try {
 			if(rs.next())
 			{
-				System.out.println("Record already present");
+				i=2;
 			}
 			else
 			{
 				Connection con= Dbconnection.getConnection();
 				
 				try {
-					PreparedStatement ps=con.prepareStatement("insert into parties values(?,?,?,?)");
+					PreparedStatement ps=con.prepareStatement("insert into parties values(?,?,?,?,?,?,?)");
 					ps.setString(1,pm.getParty_id());
 					ps.setString(2,pm.getParty_name());
 					ps.setString(3,pm.getParty_leader());
 					ps.setString(4,pm.getParty_type());
+					ps.setString(6,pm.getParty_activemambers());
+					ps.setString(5,pm.getParty_estdate());
+					ps.setString(7,pm.getParty_headquarter());
+
 					
 					 i=ps.executeUpdate();
 				} catch (SQLException e) {
@@ -90,11 +96,13 @@ public class adminoperations {
 
 		Connection con= Dbconnection.getConnection();
 		
-		String query="select * from parties where p_name=?";
+		String query="select * from parties where p_name=? or p_leader=?";
 		
 		try {
 			ps=con.prepareStatement(query);
 			ps.setString(1,pm.getParty_name());
+			ps.setString(2,pm.getParty_leader());
+
 			rs=ps.executeQuery();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

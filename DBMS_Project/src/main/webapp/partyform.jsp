@@ -36,6 +36,38 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.alert1 {
+  margin-left: 170px;
+
+  padding: 10px;
+  background-color: blue;
+  color: white;
+  border-radius: 10px
+}
+.alert {
+  margin-left: 170px;
+
+  padding: 10px;
+  background-color: red;
+  color: white;
+  border-radius: 10px
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 20px;
+  line-height: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
 body{
     background-image: url("1.jpg");
     background-size: cover;
@@ -481,6 +513,7 @@ label {
     </div>
 
     <div class="box">
+    
  
         <form action="addpartycontroller">
     
@@ -492,8 +525,41 @@ label {
          </div>
              
                 
-                <div class="heading1">party's sign up</div>
+                <div class="heading1">party's sign up
+                
+                
+                </div>
+<%
+	if(!session.isNew())
+	{
+		 String addparty_Status="false";
+		 session=request.getSession();
+		 addparty_Status=(String)session.getAttribute("party-status");
+		 
+		 if(addparty_Status=="true")
+		 {
+			 %>
+				<div class="alert1">
+	            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+	             Party Added Successfully.
+	            </div>
+	            <%
 
+		 }
+		 if(addparty_Status=="false"){
+			 %>
+				<div class="alert">
+	            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+	             Party already registered.
+	            </div>
+	            <%
+
+		 }
+		 
+		 session.removeAttribute("party-status");
+
+	}
+%>
                
                 
             </div>
@@ -517,13 +583,16 @@ label {
                
         
                 <div class="input-field">
-                    <input type="number" class="input" placeholder="Adhar_Card no" name="Adhar_Card no" id="input-field" required>
+              <!--   <select>
+                <option class="input">State</option>
+                </select> -->
+                    <input type="text" class="input" placeholder="party type" name="ptype" id="input-field" required>
                     <i class='bx bx-id-card' id="ii"></i>
-                </div>
+                 </div>
         
                 
                 <div class="input-field">
-                   <input type="number" class="input" placeholder="phone no" name="phone no" id="input-field1" required>
+                   <input type="date" class="input" placeholder="Established year" name="est" id="input-field1" required>
                   <i class='bx bx-mobile-alt' id="ii"></i> 
                </div>
               
@@ -535,7 +604,7 @@ label {
              <div class="container" style="padding-top: 0px;">
          
               <div class="input-field">
-                    <input type="email" class="input" placeholder="email" name="email" id="" required>
+                    <input type="text" class="input" placeholder="party leader" name="pleader" id="" required>
                     <i class='bx bx-envelope' id="ii"></i>
                 </div>
               
@@ -559,13 +628,13 @@ label {
             </div> -->
         
              <div class="input-field">
-                 <input type="number" placeholder="age" class="input"  name="dob" id="DOB" required>
+                 <input type="number" placeholder="active members" class="input"  name="activemembers" id="DOB" required>
                 
                  <i class='bx bx-calendar' id="ii"></i>
         <!--          <span id = "message" style="color:red"> </span> <br><br>  
         -->  </div>
              <div class="input-field">
-                <input type="text" class="input" placeholder="address" name="address" id="" required>
+                <input type="text" class="input" placeholder="Head Quarter" name="headquarter" id="" required>
                 <i class='bx bx-home-alt' id="ii"></i>
            </div>
            </div>

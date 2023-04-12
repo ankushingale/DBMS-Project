@@ -255,6 +255,7 @@ h1{
     <% 
             if(!session.isNew())
 	{
+        
 		session=request.getSession();
 		String deletesuccess=(String)session.getAttribute("delete-success");
 
@@ -290,6 +291,9 @@ h1{
             <th>party name</th>
             <th>party leader</th>
             <th>party type</th>
+			<th>Active Members</th>
+			<th>Established Date</th>
+			<th>Head Quarter</th>
 			<th>Action</th>
             <th>Action</th>
             
@@ -310,6 +314,10 @@ h1{
             <td><%=rs.getString(2)%></td>
             <td><%=rs.getString(3)%></td>
             <td><%=rs.getString(4)%></td>
+			<td><%=rs.getString(6)%></td>
+			<td><%=rs.getString(5)%></td>
+			<td><%=rs.getString(7)%></td>
+            
             
             <td><input type="button" value="update" class="btn1"></td>
              <td><a href="deleteparty?party_id=<%=rs.getString(1)%>"><input type="button" value="remove" class="btn2"></a></td>
