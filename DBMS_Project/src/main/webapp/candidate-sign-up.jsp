@@ -454,8 +454,7 @@ label {
 
     <div class="box">
  
-        <form action="home.jsp" method="post">
-    
+<form action="addcandidate" method="get">    
             <div>
             
             </div>
@@ -466,6 +465,38 @@ label {
                 
                 <div class="heading1">candidate sign up</div>
 
+               <%
+	if(!session.isNew())
+	{
+		 String addcandidate_Status="false";
+		 session=request.getSession();
+		 addcandidate_Status=(String)session.getAttribute("candidate-status");
+		 
+		 if(addcandidate_Status=="true")
+		 {
+			 %>
+				<div class="alert1">
+	            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+	             Candidates Added Successfully.
+	            </div>
+	            <%
+
+		 }
+		 if(addcandidate_Status=="false"){
+			 %>
+				<div class="alert">
+	            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+	             Candidate already registered.
+	            </div>
+	            <%
+
+		 }
+		 
+		 session.removeAttribute("candidate-status");
+
+	}
+%>
+               
                
                 
             </div>

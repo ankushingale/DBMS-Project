@@ -152,28 +152,29 @@ public class adminoperations {
 	}
 	public int addcandidate(CandidateModel1 cm12)
 	{
-		int i=0;
+		int i=1;
 
 		ResultSet rs=checkCandidate(cm12);
 		try {
 			if(rs.next())
 			{
-				System.out.println("Record already present");
+				i=2;
+			
 			}
 			else
 			{
-				Connection con= Dbconnection.getConnection();
+			Connection con= Dbconnection.getConnection();
 				
 				try {
-					PreparedStatement ps=con.prepareStatement("insert into candidate values(?,?,?,?,?,?,?,?)");
+					PreparedStatement ps=con.prepareStatement("insert into candidates values(?,?,?,?,?,?,?,?)");
 					ps.setString(1,cm12.getCandidate_email());
 					ps.setString(2,cm12.getCandidate_name());
 					ps.setString(3,cm12.getCandidate_aadhar());
 					ps.setString(4,cm12.getCandidate_party());
-					ps.setString(4,cm12.getCandidate_phone());
-					ps.setString(4,cm12.getCandidate_age());
-					ps.setString(4,cm12.getCandidate_gender());
-					ps.setString(4,cm12.getCandidate_address());
+					ps.setString(5,cm12.getCandidate_phone());
+					ps.setString(6,cm12.getCandidate_age());
+					ps.setString(7,cm12.getCandidate_gender());
+					ps.setString(8,cm12.getCandidate_address());
 					
 					
 					 i=ps.executeUpdate();
@@ -195,11 +196,13 @@ public class adminoperations {
 
 		Connection con= Dbconnection.getConnection();
 		
-		String query="select * from candidates where name=?";
+		String query="select * from candidates where candidate_name=?";
 		
 		try {
 			ps=con.prepareStatement(query);
+			/* ps.setString(1,cm12.getCandidate_email()); */
 			ps.setString(1,cm12.getCandidate_name());
+		
 			rs=ps.executeQuery();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

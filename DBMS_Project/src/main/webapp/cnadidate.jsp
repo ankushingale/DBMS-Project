@@ -244,12 +244,44 @@ h1{
         </ul>
     </div>
 
-
-<div class="heading1">candidate</div>
+    <div class="heading1">candidate</div>
     
 
     <div class="box1">
                          
+    <% 
+            if(!session.isNew())
+	{
+        
+		session=request.getSession();
+		String deletesuccess=(String)session.getAttribute("delete-success");
+
+		/* System.out.println(value); */
+		if(deletesuccess=="true")
+		{
+			%>
+			<script type="text/javascript">
+		
+     						Swal.fire({
+       						//  position: 'top-end',
+        					icon: 'success',
+/*         					title:'Oops..!!',
+ */        					text: 'candidate removed Successfully',
+/*         					showConfirmButton: true,
+ */        						
+      					})
+      					
+      					
+  
+   							</script>
+  			<% 
+
+		}
+	}
+			session.removeAttribute("delete-success");
+             %>    
+
+
     <table>
         
         <tr>
@@ -261,89 +293,39 @@ h1{
             <th>Gender</th>
             <th>Date of birth</th>
             <th>Address</th>
-            <th>Update</th>
-            <th>Delete</th>
+            <th>Action</th>
+            <th>Action</th>
+           
         </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-            <td><input type="button" value="remove" class="btn2"></td>
-            
-
+          <%--  <%
+        	a();
+        	ResultSet rs=aoper.displayCandidates();
+        	int cnt=1;
+        	while(rs.next())
+        	{	
+        %> --%>
+        
+       <%--  <tr>
+            <td><%=cnt%></td>
+            <td><%=rs.getString(1)%></td>
+            <td><%=rs.getString(2)%></td>
+            <td><%=rs.getString(3)%></td>
+            <td><%=rs.getString(4)%></td>
+			<td><%=rs.getString(6)%></td>
+			<td><%=rs.getString(5)%></td>
+			<td><%=rs.getString(7)%></td>
+            <td><%=rs.getString(8)%></td>
+            <td><%=rs.getString(9)%></td>
+        
+        
+             <td><a href="models/candidateupdatemodel.jsp" class="cta" data-target="#mymodel" data-toggle="modal"><input type="button" value="update" class="btn1"></a></td>
+             <td><a href="deletecandidate?candidate_email=<%=rs.getString(1)%>"><input type="button" value="remove" class="btn2"></a></td>
+ 
         </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-            <td><input type="button" value="remove" class="btn2"></td>
-
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-            <td><input type="button" value="remove" class="btn2"></td>
-
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-            <td><input type="button" value="remove" class="btn2"></td>
-            
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-            <td><input type="button" value="remove" class="btn2"></td>
-            
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-            <td><input type="button" value="remove" class="btn2"></td>
-            
-        </tr> 
-    </table> 
+        <%
+        	}
+            %> --%>
+           </table> 
     
     <div class="save-btn"><a href="candidate-sign-up.jsp"> <input type="submit" value="Add Candidate" class="btn1"></a></div>
 </div>
