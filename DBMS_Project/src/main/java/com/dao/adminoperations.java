@@ -267,14 +267,14 @@ public class adminoperations {
 	public void insertupdatedparty(partymodel pm)
 	{
 		
-		addparty(pm);
+		
 		System.out.println("inside insertupdatedparty");
 		Connection con=Dbconnection.getConnection();
-		
+		int i=0;
 		try {
 			PreparedStatement ps=con.prepareStatement("update parties set p_id=?,p_name=?,p_leader=?,p_type=?,active_members=?,est_date=?,Head_quarters=? where p_id=?" );
 			
-			System.out.println(pm.getParty_name());
+			System.out.println(pm.getParty_type());
 			
 			ps.setString(1,pm.getParty_id());
 			ps.setString(2,pm.getParty_name());
@@ -285,7 +285,7 @@ public class adminoperations {
 			ps.setString(7,pm.getParty_headquarter());
 			ps.setString(8,pm.getParty_id());
 			
-			int i=ps.executeUpdate();
+			i=ps.executeUpdate();
 
 		}catch (Exception e) {
 			// TODO: handle exception

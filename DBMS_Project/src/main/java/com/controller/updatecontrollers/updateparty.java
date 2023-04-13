@@ -35,13 +35,13 @@ public class updateparty extends HttpServlet {
 		String pid=request.getParameter("party_id");
 		String pname=request.getParameter("pname");
 		String pleader=request.getParameter("pleader");
-		String ptype=request.getParameter("ptypr");
+		String ptype=request.getParameter("ptype");
 		String members=request.getParameter("activemembers");
 		String esdate=request.getParameter("estade");
 		String head=request.getParameter("head");
 		
 		System.out.println(pid);
-		
+		System.out.println(members);
 		partymodel pm=new partymodel(pid, pname, pleader, ptype, members, esdate, head);
 		System.out.println(pm.getParty_id());
 		adminoperations aop=new adminoperations();
