@@ -29,7 +29,7 @@ public class addcandidate extends HttpServlet {
     }
 
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response,String address, String optradio, String dob, String phone_no) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		int user_id=0;
@@ -60,7 +60,7 @@ public class addcandidate extends HttpServlet {
 		int j=aoper.addcandidate(cm12);
 		if(j>0)
 		{
-			System.out.println("Record inserted");
+			System.out.println("candidate Record inserted");
 		}
 		
 

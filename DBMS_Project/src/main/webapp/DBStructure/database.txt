@@ -39,10 +39,13 @@ candidate_address varchar(255)
 
 create table parties
 ( 
-p_id varchar(255) primary key,
+p_id varchar(255),
 p_name varchar(255),
 p_leader varchar(255),
-p_type varchar(255)
+p_type varchar(255),
+active_numbers varchar(255),
+est_date varchar(255),
+head_quarters varchar(255)
 );
 
 

@@ -454,7 +454,7 @@ label {
 
     <div class="box">
  
-<form action="addpartycontroller">    
+<form action="addcandidate" method="get">    
             <div>
             
             </div>

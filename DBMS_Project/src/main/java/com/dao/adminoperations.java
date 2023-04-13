@@ -166,15 +166,15 @@ public class adminoperations {
 			Connection con= Dbconnection.getConnection();
 				
 				try {
-					PreparedStatement ps=con.prepareStatement("insert into candidate values(?,?,?,?,?,?,?,?)");
+					PreparedStatement ps=con.prepareStatement("insert into candidates values(?,?,?,?,?,?,?,?)");
 					ps.setString(1,cm12.getCandidate_email());
 					ps.setString(2,cm12.getCandidate_name());
 					ps.setString(3,cm12.getCandidate_aadhar());
-					ps.setString(5,cm12.getCandidate_party());
-					ps.setString(6,cm12.getCandidate_phone());
-					ps.setString(7,cm12.getCandidate_age());
-					ps.setString(8,cm12.getCandidate_gender());
-					ps.setString(9,cm12.getCandidate_address());
+					ps.setString(4,cm12.getCandidate_party());
+					ps.setString(5,cm12.getCandidate_phone());
+					ps.setString(6,cm12.getCandidate_age());
+					ps.setString(7,cm12.getCandidate_gender());
+					ps.setString(8,cm12.getCandidate_address());
 					
 					
 					 i=ps.executeUpdate();
@@ -196,12 +196,12 @@ public class adminoperations {
 
 		Connection con= Dbconnection.getConnection();
 		
-		String query="select * from candidates where name=?";
+		String query="select * from candidates where candidate_name=?";
 		
 		try {
 			ps=con.prepareStatement(query);
-			ps.setString(1,cm12.getCandidate_email());
-			ps.setString(2,cm12.getCandidate_name());
+			/* ps.setString(1,cm12.getCandidate_email()); */
+			ps.setString(1,cm12.getCandidate_name());
 		
 			rs=ps.executeQuery();
 		} catch (SQLException e) {

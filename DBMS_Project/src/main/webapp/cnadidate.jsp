@@ -297,15 +297,15 @@ h1{
             <th>Action</th>
            
         </tr>
-           <%
-        	adminoperations aoper =new adminoperations();
+          <%--  <%
+        	a();
         	ResultSet rs=aoper.displayCandidates();
         	int cnt=1;
         	while(rs.next())
         	{	
-        %>
+        %> --%>
         
-        <tr>
+       <%--  <tr>
             <td><%=cnt%></td>
             <td><%=rs.getString(1)%></td>
             <td><%=rs.getString(2)%></td>
@@ -324,7 +324,7 @@ h1{
         </tr>
         <%
         	}
-            %>
+            %> --%>
            </table> 
     
     <div class="save-btn"><a href="candidate-sign-up.jsp"> <input type="submit" value="Add Candidate" class="btn1"></a></div>
