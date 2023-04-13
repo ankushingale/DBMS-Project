@@ -15,6 +15,35 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.alert {
+  padding: 10px;
+  background-color: green;
+  color: white;
+  border-radius: 10px
+}
+.alert1 {
+  padding: 10px;
+  background-color: #f44336;
+  color: white;
+  border-radius: 10px
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 20px;
+  line-height: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
 body{
     background-image: url("1.jpg");
     background-size: cover;

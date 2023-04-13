@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dao.adminoperations;
 import com.model.CandidateModel1;
@@ -60,7 +61,10 @@ public class addcandidate extends HttpServlet {
 		int j=aoper.addcandidate(cm12);
 		if(j>0)
 		{
-			System.out.println("candidate Record inserted");
+			HttpSession session=request.getSession();
+			session.setAttribute("candidate-status", "true");
+			System.out.println("Inside session");
+			response.sendRedirect("candidate-sign-up.jsp");
 		}
 		
 
