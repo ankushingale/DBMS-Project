@@ -33,10 +33,10 @@ public class deletecandidate extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String candidate_email=request.getParameter("candidate_email");
+		String candidate_id=request.getParameter("candidate_id");
 		
 		adminoperations aoper=new adminoperations();
-		int i=aoper.deleteCandidate(candidate_email);
+		int i=aoper.deleteCandidate(candidate_id);
 		if(i>0)
 		{
 			HttpSession session=request.getSession();

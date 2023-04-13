@@ -8,19 +8,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dao.adminoperations;
-import com.model.partymodel;
+import com.model.CandidateModel1;
 
 /**
- * Servlet implementation class updateparty
+ * Servlet implementation class updatecandidate
  */
-@WebServlet("/updateparty")
-public class updateparty extends HttpServlet {
+@WebServlet("/updatecandidate")
+public class updatecandidate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public updateparty() {
+    public updatecandidate() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,30 +30,20 @@ public class updateparty extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("inside servlet");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String pid=request.getParameter("party_id");
-		String pname=request.getParameter("pname");
-		String pleader=request.getParameter("pleader");
-		String ptype=request.getParameter("ptype");
-		String members=request.getParameter("activemembers");
-		String esdate=request.getParameter("est");
-
-		String head=request.getParameter("head");
+		String cid=request.getParameter("candidate_id");
+		String name=request.getParameter("cname");
+		String adhar=request.getParameter("cadhar");
+		String party=request.getParameter("cparty");
+		String phone=request.getParameter("cphone");
+		String age=request.getParameter("cage");
+		String gender=request.getParameter("cgender");
+		String address=request.getParameter("caddress");
 		
-		System.out.println(pid);
-		System.out.println(esdate);
-		partymodel pm=new partymodel(pid, pname, pleader, ptype, members, esdate, head);
-		System.out.println(pm.getParty_id());
+		CandidateModel1 cm=new CandidateModel1(cid, name, adhar, party, phone, age, gender, address);
+		
 		adminoperations aop=new adminoperations();
-		aop.insertupdatedparty(pm);
-
-        
-        
-        
-        
-        
-        
+		aop.insertupdatedcandidte(cm);
 	}
 
 	/**

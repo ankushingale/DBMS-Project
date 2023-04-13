@@ -8,6 +8,14 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="dashboard.css">
+    <script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js
+"></script>
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    	    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    	          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" />
+    	    
     <title>Document</title>
     <style type="text/css">
     *{
@@ -228,6 +236,16 @@ h1{
 <meta charset="ISO-8859-1">
 
 <title>Admin | Dashboard</title>
+<script type="text/javascript">
+function ExportToExcel(type, fn, dl) {
+	console.log("Hello in excel")
+       var elt = document.getElementById('tbl_exporttable_to_xls');
+       var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+       return dl ?
+         XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
+         XLSX.writeFile(wb, fn || ('Candidate Details.' + (type || 'xlsx')));
+    }
+</script>
 
 </head>
 <body>
@@ -258,7 +276,7 @@ h1{
 		session=request.getSession();
 		String deletesuccess=(String)session.getAttribute("delete-success");
 
-		/* System.out.println(value); */
+		System.out.println(deletesuccess); 
 		if(deletesuccess=="true")
 		{
 			%>
@@ -284,17 +302,17 @@ h1{
              %>    
 
 
-    <table>
+    <table class="table" id="tbl_exporttable_to_xls">
         
         <tr>
             <th>sr</th>
-            <th>Name </th> 
-            <th>E-mail</th>
+            <th>id</th> 
+            <th>name</th>
             <th>Aadhar no</th>
             <th>party</th>
             <th>Contact no</th>
             <th>Gender</th>
-            <th>Date of birth</th>
+            <th>Age</th>
             <th>Address</th>
             <th>Action</th>
             <th>Action</th>
@@ -320,8 +338,8 @@ h1{
             <td><%=rs.getString(8)%></td>
         
         
-             <td><a href="models/candidateupdatemodel.jsp" class="cta" data-target="#mymodel" data-toggle="modal"><input type="button" value="update" class="btn1"></a></td>
-             <td><a href="deletecandidate?candidate_email=<%=rs.getString(1)%>"><input type="button" value="remove" class="btn2"></a></td>
+             <td><a href="models/candidatemodel.jsp?candidate_id=<%=rs.getString(1)%>" class="cta" data-target="#mymodel" data-toggle="modal"><input type="button" value="update" class="btn1"></a></td>
+             <td><a href="deletecandidate?candidate_id=<%=rs.getString(1)%>"><input type="button" value="remove" class="btn2"></a></td>
  
         </tr>
         <%
@@ -330,4 +348,25 @@ h1{
            </table> 
     
     <div class="save-btn"><a href="candidate-sign-up.jsp"> <input type="submit" value="Add Candidate" class="btn1"></a></div>
+        <div class="save-btn"><input type="submit" value="download" id="btnExport" onclick="ExportToExcel()" title="Pdf" class="btn1"></div>
+    
+     <script type="text/javascript">
+    function Export() {
+    	
+    	console.log("inside export fnunction")
+        html2canvas(document.getElementById('tbl_exporttable_to_xls'), {
+            onrendered: function (canvas) {
+                var data = canvas.toDataURL();
+                var docDefinition = {
+                    content: [{
+                        image: data,
+                        width: 500
+                    }]
+                };
+                pdfMake.createPdf(docDefinition).download("Candidate Details.pdf");
+            }
+        });
+    }
+</script>
+    
 </div>

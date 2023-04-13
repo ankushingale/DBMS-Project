@@ -228,14 +228,14 @@ public class adminoperations {
 		
 		return rs;
 	}
-	public int deleteCandidate(String candidate_email)
+	public int deleteCandidate(String candidate_id)
 	{
 		Connection con=Dbconnection.getConnection();
 		System.out.println("Inside dlete");
 		int i=0;
 		try {
-			PreparedStatement ps=con.prepareStatement("delete from candidate where email=?");
-			ps.setString(1, candidate_email);
+			PreparedStatement ps=con.prepareStatement("delete from candidates where candidate_id=?");
+			ps.setString(1, candidate_id);
 			i = ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -278,6 +278,7 @@ public class adminoperations {
 			PreparedStatement ps=con.prepareStatement("update parties set p_id=?,p_name=?,p_leader=?,p_type=?,active_members=?,est_date=?,Head_quarters=? where p_id=?" );
 			
 			System.out.println(pm.getParty_type());
+			System.out.println(pm.getParty_estdate());
 			
 			ps.setString(1,pm.getParty_id());
 			ps.setString(2,pm.getParty_name());
@@ -295,5 +296,55 @@ public class adminoperations {
 		}
 	}
 
+	
+	
+	
+	public ResultSet displayCandidatesFrompid(String candidate_id)
+	{
+		Connection con= Dbconnection.getConnection();
+		
+		
+		try {
+			PreparedStatement ps=con.prepareStatement("select * from candidates where candidate_id=?");
+			ps.setString(1, candidate_id);
+			rs=ps.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return rs;
+	}
+	
+	public void insertupdatedcandidte(CandidateModel1 pm)
+	{
+		
+		
+		System.out.println("inside insertupdatcandidate");
+		Connection con=Dbconnection.getConnection();
+		int i=0;
+		try {
+			PreparedStatement ps=con.prepareStatement("update candidates set candidate_name=?,candidate_Aadhar=?,candidate_party=?,candidate_phone=?,candidate_age=?,candidate_gender=?,candidate_address=? where candidate_id=?" );
+			
+			System.out.println("inside insertupdatedcandidte");
+			System.out.println(pm.getCandidate_party());
+			ps.setString(1,pm.getCandidate_name());
+			ps.setString(2,pm.getCandidate_aadhar());
+			ps.setString(3,pm.getCandidate_party());
+			ps.setString(4,pm.getCandidate_phone());
+			ps.setString(5,pm.getCandidate_age());
+			ps.setString(6,pm.getCandidate_gender());
+			ps.setString(7,pm.getCandidate_address());
+			ps.setString(8,pm.getCandidate_email());
+			
+			i=ps.executeUpdate();
+
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+	
+	
 	
 }

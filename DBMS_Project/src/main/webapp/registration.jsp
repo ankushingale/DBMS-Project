@@ -8,6 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="dashboard.css">
     <title>Document</title>
+    	<script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    	    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    	
+    
     <style type="text/css">
     *{
     margin: 0;
@@ -205,7 +210,18 @@ h1{
 </style>
 <meta charset="ISO-8859-1">
 
-<title>Admin | Dashboard</title>
+<title> Admin|Dashboard|Registeredusers</title>
+
+<script type="text/javascript">
+function ExportToExcel(type, fn, dl) {
+	console.log("Hello in excel")
+       var elt = document.getElementById('tbl_exporttable_to_xls');
+       var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+       return dl ?
+         XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
+         XLSX.writeFile(wb, fn || ('Registration Details.' + (type || 'xlsx')));
+    }
+</script>
 
 </head>
 <body>
@@ -232,7 +248,7 @@ h1{
 
     <div class="box1">
                          
-    <table>
+    <table class="table" id="tbl_exporttable_to_xls">
        
         <tr>
             <th>sr</th>
@@ -243,7 +259,6 @@ h1{
             <th>gender</th>
             <th>date of birth</th>
             <th>address</th>
-            <th>update</th>
         </tr>
          <%
         adminoperations aop=new adminoperations();
@@ -262,7 +277,6 @@ h1{
             <td><%=rs.getString(7) %></td>
             <td><%=rs.getString(5) %></td>
             <td><%=rs.getString(10) %></td>
-            <td><input type="button" value="update" class="btn1"></td>
         </tr>
         <% 
         cnt++;
@@ -326,5 +340,24 @@ h1{
         </tr>  -->
     </table> 
     
-    <div class="save-btn"><input type="button" value="save" class="btn1"></div>
+    <div class="save-btn"><input type="submit" value="download" id="btnExport" onclick="Export()" title="Pdf" class="btn1"></div>
+    <script type="text/javascript">
+    function Export() {
+    	
+    	console.log("inside export fnunction")
+        html2canvas(document.getElementById('tbl_exporttable_to_xls'), {
+            onrendered: function (canvas) {
+                var data = canvas.toDataURL();
+                var docDefinition = {
+                    content: [{
+                        image: data,
+                        width: 500
+                    }]
+                };
+                pdfMake.createPdf(docDefinition).download("Registration Details.pdf");
+            }
+        });
+    }
+</script>
+    
 </div>
