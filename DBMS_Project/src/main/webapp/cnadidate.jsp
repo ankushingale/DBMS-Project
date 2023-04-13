@@ -29,10 +29,8 @@ body{
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    
-
-    
 }
+
 /* SIDE BAR CSS */
 .header{
     position: fixed;
@@ -210,11 +208,10 @@ table {
 /* dashboard css */
 .box{
     display: flex;
-align-items: center;
-padding-left: 300px;
-padding-right: 0px;
-padding-top: 40px;
-flex-direction: column;
+    align-items: center;
+    padding-left: 300px; 
+    padding-top: 40px;
+    flex-direction: column;
 
 }
 
@@ -230,7 +227,6 @@ h1{
     right: 0px;
     transform:translateX(-50%)translateY(-50%);
     color:a liceblue;
-
 }
 </style>
 <meta charset="ISO-8859-1">
@@ -274,7 +270,7 @@ function ExportToExcel(type, fn, dl) {
 	{
         
 		session=request.getSession();
-		String deletesuccess=(String)session.getAttribute("delete-success");
+		String deletesuccess =( String)session.getAttribute("delete-success");
 
 		System.out.println(deletesuccess); 
 		if(deletesuccess=="true")
@@ -318,6 +314,7 @@ function ExportToExcel(type, fn, dl) {
             <th>Action</th>
            
         </tr>
+        </script>
           <%
         	adminoperations aop=new adminoperations();
         	ResultSet rs=aop.displayCandidates();

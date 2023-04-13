@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="css/style.css">
+     <!-- <link rel="stylesheet" href="css/style.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style type="text/css">
@@ -16,6 +16,10 @@
     margin: 0;
     padding: 0;
     /* it is use to remove the padding of nav bar or over all extra padding*/
+}
+.fa {
+    font-weight: 900;
+    padding-right: 10px;
 }
 body{
     background-image: url("1.jpg") !important;
@@ -73,12 +77,13 @@ header{
 
 .input-field .input{
     height: 45px;
-    width: 90%;
+    width: 100%;
     border: none;
     border-radius: 30px;
     color: #fff;
     font-size: 15px;
-    padding: 0 0 0 45px;
+    margin-top:20px;
+    padding: 0 0 0 47px;
     background: rgba(255,255,255,0.1);
     outline: none;
 }
@@ -109,6 +114,7 @@ i{
     font-size: 15px;
     height: 45px;
     outline: none;
+    margin-top: 20px;
     width: 100%;
     color: black;
     background: rgba(255,255,255,0.7);
@@ -260,7 +266,7 @@ table {
             
             
         </div>
-<header>Login</header>
+       <header>Login</header>
         <div class="input-field">
             <input type="text" class="input" placeholder="Username" name="username" id="">
             <i class='bx bx-user' ></i>

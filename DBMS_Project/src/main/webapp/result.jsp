@@ -206,16 +206,35 @@ h1{
     color:a liceblue;
 
 }
+.result-btn{
+    display: flex;
+    
 
+}
+.btn11{
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    height: 40px;
+    outline: none;
+    width:140px;
+    color: black;
+    background: rgba(255,255,255,0.7);
+    cursor: pointer;
+    transition: .3s ;
+    margin: 0;
+    padding: 0;
+}
 
-rect[Attributes Style] {
-    x: 0;
-    y: 0;
-    width: 550;
-    height: 400;
-    stroke: none;
-    stroke-width: 0;
-   
+.btn11:hover{
+    box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+}
+.save-btn1{
+    margin-top: 36px;
+    margin-left: 100px;
+}
+.save-btn{
+    margin-left: 10px;
 }
 </style>
 <meta charset="ISO-8859-1">
@@ -327,7 +346,25 @@ rect[Attributes Style] {
         </tr> 
     </table> 
     <div class="result-btn">
-    <div class="save-btn"><input type="button" value="download pdf" class="btn1"></div>
-    <div class="save-btn"><input type="button" value="download excel" class="btn1"></div>
+    <div class="save-btn1"><input type="button" value="download pdf" id="btnExport" onclick="ExportToExcel()"  class="btn11"></div>
+    <div class="save-btn"><input type="button" value="download excel" class="btn11"></div>
+    <script type="text/javascript">
+    function Export() {
+    	
+    	console.log("inside export fnunction")
+        html2canvas(document.getElementById('tbl_exporttable_to_xls'), {
+            onrendered: function (canvas) {
+                var data = canvas.toDataURL();
+                var docDefinition = {
+                    content: [{
+                        image: data,
+                        width: 500
+                    }]
+                };
+                pdfMake.createPdf(docDefinition).download("Candidate Details.pdf");
+            }
+        });
+    }
+</script>
     </div> 
 </div>

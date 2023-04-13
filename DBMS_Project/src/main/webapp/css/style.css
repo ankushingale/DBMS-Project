@@ -74,6 +74,7 @@ header{
     border-radius: 30px;
     color: #fff;
     font-size: 15px;
+    margin-top:20px;
     padding: 0 0 0 45px;
     background: rgba(255,255,255,0.1);
     outline: none;
@@ -105,6 +106,7 @@ i{
     font-size: 15px;
     height: 45px;
     outline: none;
+    margin-top: 20px;
     width: 100%;
     color: black;
     background: rgba(255,255,255,0.7);

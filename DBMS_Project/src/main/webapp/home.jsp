@@ -86,7 +86,7 @@ padding-left:0px;
      
     <header>
  
-        <img class="logo" src="./images/logo.svg" alt="">
+        
  
         <nav>
             <!-- <ul class="nav__links">
