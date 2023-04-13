@@ -320,7 +320,8 @@ h1{
             
                    
             
-            <td><a href="models/partyupdatemodel.jsp" class="cta" data-target="#mymodel" data-toggle="modal"><input type="button" value="update" class="btn1"></a></td>
+            
+            <td><a href="models/partyupdatemodel.jsp?party_id=<%=rs.getString(1)%>" class="cta"><button type="button" class="btn2" data-toggle="modal" data-target="#exampleModal">Update</button></a></td>
              <td><a href="deleteparty?party_id=<%=rs.getString(1)%>"><input type="button" value="remove" class="btn2"></a></td>
  
         </tr>
