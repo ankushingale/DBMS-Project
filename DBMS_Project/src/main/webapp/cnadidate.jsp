@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="com.dao.adminoperations"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -289,6 +291,7 @@ h1{
             <th>Name </th> 
             <th>E-mail</th>
             <th>Aadhar no</th>
+            <th>party</th>
             <th>Contact no</th>
             <th>Gender</th>
             <th>Date of birth</th>
@@ -297,25 +300,24 @@ h1{
             <th>Action</th>
            
         </tr>
-          <%--  <%
-        	a();
-        	ResultSet rs=aoper.displayCandidates();
+          <%
+        	adminoperations aop=new adminoperations();
+        	ResultSet rs=aop.displayCandidates();
         	int cnt=1;
         	while(rs.next())
         	{	
-        %> --%>
+        %>
         
-       <%--  <tr>
+       <tr>
             <td><%=cnt%></td>
             <td><%=rs.getString(1)%></td>
             <td><%=rs.getString(2)%></td>
             <td><%=rs.getString(3)%></td>
             <td><%=rs.getString(4)%></td>
-			<td><%=rs.getString(6)%></td>
 			<td><%=rs.getString(5)%></td>
 			<td><%=rs.getString(7)%></td>
+			<td><%=rs.getString(6)%></td>
             <td><%=rs.getString(8)%></td>
-            <td><%=rs.getString(9)%></td>
         
         
              <td><a href="models/candidateupdatemodel.jsp" class="cta" data-target="#mymodel" data-toggle="modal"><input type="button" value="update" class="btn1"></a></td>
@@ -324,7 +326,7 @@ h1{
         </tr>
         <%
         	}
-            %> --%>
+            %> 
            </table> 
     
     <div class="save-btn"><a href="candidate-sign-up.jsp"> <input type="submit" value="Add Candidate" class="btn1"></a></div>
