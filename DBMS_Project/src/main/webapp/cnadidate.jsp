@@ -271,6 +271,7 @@ function ExportToExcel(type, fn, dl) {
         
 		session=request.getSession();
 		String deletesuccess =(String)session.getAttribute("delete-success");
+		String updatesuccess =(String)session.getAttribute("update-true");
 		if(deletesuccess=="true")
 		{
 			%>
@@ -291,8 +292,57 @@ function ExportToExcel(type, fn, dl) {
   			<% 
 
 		}
+		session.removeAttribute("delete-success");
+
+		if(updatesuccess=="true")
+		{
+			System.out.println("Inside update");
+			%>
+			<script type="text/javascript">
+		
+     						Swal.fire({
+       						//  position: 'top-end',
+        					icon: 'success',
+/*         					title:'Oops..!!',
+ */        					text: 'candidate updated Successfully',
+/*         					showConfirmButton: true,
+ */        						
+      					})
+      					
+      					
+  
+   							</script>
+  			<% 
+
+		}
+		session.removeAttribute("delete-success");
+
+		if(updatesuccess=="false")
+		{
+			System.out.println("Inside update");
+			%>
+			<script type="text/javascript">
+		
+     						Swal.fire({
+       						//  position: 'top-end',
+        					icon: 'error',
+/*         					title:'Oops..!!',
+ */        					text: 'candidate present already',
+/*         					showConfirmButton: true,
+ */        						
+      					})
+      					
+      					
+  
+   							</script>
+  			<% 
+
+		}
+		session.removeAttribute("update-true");
+
+
 	}
-			session.removeAttribute("delete-success");
+
              %>    
 
 

@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 import com.model.CandidateModel1;
 import com.model.partymodel;
+import com.mysql.cj.protocol.Resultset;
 
 public class adminoperations {
 	
@@ -267,33 +268,49 @@ public class adminoperations {
 	}
 	
 	
-	public void insertupdatedparty(partymodel pm)
+	public int insertupdatedparty(partymodel pm)
 	{
-		
-		
-		System.out.println("inside insertupdatedparty");
-		Connection con=Dbconnection.getConnection();
 		int i=0;
-		try {
-			PreparedStatement ps=con.prepareStatement("update parties set p_id=?,p_name=?,p_leader=?,p_type=?,active_members=?,est_date=?,Head_quarters=? where p_id=?" );
-			
-			System.out.println(pm.getParty_type());
-			System.out.println(pm.getParty_estdate());
-			
-			ps.setString(1,pm.getParty_id());
-			ps.setString(2,pm.getParty_name());
-			ps.setString(3,pm.getParty_leader());
-			ps.setString(4,pm.getParty_type());
-			ps.setString(5,pm.getParty_activemambers());
-			ps.setString(6,pm.getParty_estdate());
-			ps.setString(7,pm.getParty_headquarter());
-			ps.setString(8,pm.getParty_id());
-			
-			i=ps.executeUpdate();
 
-		}catch (Exception e) {
-			// TODO: handle exception
+		ResultSet rs=checkParty(pm);		
+		 
+		try {
+			if(rs.next())
+			{
+				i=2;
+			}
+			else
+			{
+				System.out.println("inside insertupdatedparty");
+				Connection con=Dbconnection.getConnection();
+				try {
+					PreparedStatement ps=con.prepareStatement("update parties set p_id=?,p_name=?,p_leader=?,p_type=?,active_members=?,est_date=?,Head_quarters=? where p_id=?" );
+					
+					System.out.println(pm.getParty_type());
+					System.out.println(pm.getParty_estdate());
+					
+					ps.setString(1,pm.getParty_id());
+					ps.setString(2,pm.getParty_name());
+					ps.setString(3,pm.getParty_leader());
+					ps.setString(4,pm.getParty_type());
+					ps.setString(5,pm.getParty_activemambers());
+					ps.setString(6,pm.getParty_estdate());
+					ps.setString(7,pm.getParty_headquarter());
+					ps.setString(8,pm.getParty_id());
+					
+					i=ps.executeUpdate();
+
+				}catch (Exception e) {
+					// TODO: handle exception
+				}
+				
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+				return i;
 	}
 
 	
@@ -316,35 +333,33 @@ public class adminoperations {
 		return rs;
 	}
 	
-	public void insertupdatedcandidte(CandidateModel1 pm)
+	public int insertupdatedcandidte(CandidateModel1 pm)
 	{
-		
-		
+			int i=0;
 		System.out.println("inside insertupdatcandidate");
-		Connection con=Dbconnection.getConnection();
-		int i=0;
-		try {
-			PreparedStatement ps=con.prepareStatement("update candidates set candidate_name=?,candidate_Aadhar=?,candidate_party=?,candidate_phone=?,candidate_age=?,candidate_gender=?,candidate_address=? where candidate_id=?" );
-			
-			System.out.println("inside insertupdatedcandidte");
-			System.out.println(pm.getCandidate_party());
-			ps.setString(1,pm.getCandidate_name());
-			ps.setString(2,pm.getCandidate_aadhar());
-			ps.setString(3,pm.getCandidate_party());
-			ps.setString(4,pm.getCandidate_phone());
-			ps.setString(5,pm.getCandidate_age());
-			ps.setString(6,pm.getCandidate_gender());
-			ps.setString(7,pm.getCandidate_address());
-			ps.setString(8,pm.getCandidate_email());
-			
-			i=ps.executeUpdate();
+				Connection con=Dbconnection.getConnection();
+				try {
+					PreparedStatement ps=con.prepareStatement("update candidates set candidate_name=?,candidate_Aadhar=?,candidate_party=?,candidate_phone=?,candidate_age=?,candidate_gender=?,candidate_address=? where candidate_id=?" );
+					
+					System.out.println("inside insertupdatedcandidte");
+					System.out.println(pm.getCandidate_party());
+					ps.setString(1,pm.getCandidate_name());
+					ps.setString(2,pm.getCandidate_aadhar());
+					ps.setString(3,pm.getCandidate_party());
+					ps.setString(4,pm.getCandidate_phone());
+					ps.setString(5,pm.getCandidate_age());
+					ps.setString(6,pm.getCandidate_gender());
+					ps.setString(7,pm.getCandidate_address());
+					ps.setString(8,pm.getCandidate_email());
+					
+					i=ps.executeUpdate();
 
-		}catch (Exception e) {
-			// TODO: handle exception
-		}
-	}
-
-	
-	
-	
+				}catch (Exception e) {
+					// TODO: handle exception
+				}
+				return i;
+			}
 }
+		
+	
+

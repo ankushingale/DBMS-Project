@@ -258,6 +258,8 @@ h1{
         
 		session=request.getSession();
 		String deletesuccess=(String)session.getAttribute("delete-success");
+		String partysuccess=(String)session.getAttribute("party-success");
+
 
 		/* System.out.println(value); */
 		if(deletesuccess=="true")
@@ -280,8 +282,54 @@ h1{
   			<% 
 
 		}
+		session.removeAttribute("delete-success");
+
+		
+		if(partysuccess=="true")
+		{
+			%>
+			<script type="text/javascript">
+		
+     						Swal.fire({
+       						//  position: 'top-end',
+        					icon: 'success',
+/*         					title:'Oops..!!',
+ */        					text: 'party updated Successfully',
+/*         					showConfirmButton: true,
+ */        						
+      					})
+      					
+      					
+  
+   							</script>
+  			<% 
+
+		}
+		
+		if(partysuccess=="false")
+		{
+			%>
+			<script type="text/javascript">
+		
+     						Swal.fire({
+       						//  position: 'top-end',
+        					icon: 'error',
+/*         					title:'Oops..!!',
+ */        					text: 'party present already',
+/*         					showConfirmButton: true,
+ */        						
+      					})
+      					
+      					
+  
+   							</script>
+  			<% 
+
+		}
+		
 	}
-			session.removeAttribute("delete-success");
+	session.removeAttribute("party-success");
+
              %>            
     <table>
         
@@ -291,8 +339,8 @@ h1{
             <th>party name</th>
             <th>party leader</th>
             <th>party type</th>
-			<th>Active Members</th>
 			<th>Established Date</th>
+			<th>Active Members</th>
 			<th>Head Quarter</th>
 			<th>Action</th>
             <th>Action</th>

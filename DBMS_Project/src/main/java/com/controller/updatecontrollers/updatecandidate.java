@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dao.adminoperations;
 import com.model.CandidateModel1;
@@ -43,7 +44,22 @@ public class updatecandidate extends HttpServlet {
 		CandidateModel1 cm=new CandidateModel1(cid, name, adhar, party, phone, age, gender, address);
 		
 		adminoperations aop=new adminoperations();
-		aop.insertupdatedcandidte(cm);
+		int i=aop.insertupdatedcandidte(cm);
+		
+		if(i<2)
+		{
+			HttpSession session=request.getSession();
+			System.out.println("Inside session");
+			session.setAttribute("update-true","true");
+			response.sendRedirect("cnadidate.jsp");
+		}
+		else
+		{
+			HttpSession session=request.getSession();
+			System.out.println("Inside session");
+			session.setAttribute("update-true","false");
+			response.sendRedirect("cnadidate.jsp");
+		}
 	}
 
 	/**

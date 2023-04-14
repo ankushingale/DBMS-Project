@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dao.adminoperations;
 import com.model.partymodel;
@@ -46,8 +47,20 @@ public class updateparty extends HttpServlet {
 		partymodel pm=new partymodel(pid, pname, pleader, ptype, members, esdate, head);
 		System.out.println(pm.getParty_id());
 		adminoperations aop=new adminoperations();
-		aop.insertupdatedparty(pm);
-
+		int i=aop.insertupdatedparty(pm);
+		
+		if(i<2)
+		{
+			HttpSession session=request.getSession();
+			session.setAttribute("party-success", "true");
+			response.sendRedirect("partys.jsp");
+		}
+		else
+		{
+			HttpSession session=request.getSession();
+			session.setAttribute("party-success", "false");
+			response.sendRedirect("partys.jsp");
+		}
         
         
         
