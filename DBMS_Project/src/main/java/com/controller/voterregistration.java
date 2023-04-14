@@ -37,8 +37,9 @@ public class voterregistration extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		int user_id=0;
+		/*
+		 * Hello
+		 */		int user_id=0;
 		int i;
 		ArrayList<Integer> list=new ArrayList<Integer>();
 		for(i=1;i<5000;i++)
