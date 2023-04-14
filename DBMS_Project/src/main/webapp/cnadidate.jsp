@@ -270,7 +270,7 @@ function ExportToExcel(type, fn, dl) {
 	{
         
 		session=request.getSession();
-		String deletesuccess =( String)session.getAttribute("delete-success");
+		String deletesuccess =(String)session.getAttribute("delete-success");
 
 		System.out.println(deletesuccess); 
 		if(deletesuccess=="true")
