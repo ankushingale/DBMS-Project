@@ -43,7 +43,7 @@ body{
     border: none;
     border-radius: 30px;
     font-size: 15px;
-    height: 45px;
+    height: 53px;
     outline: none;
     width: 400px;
     color: black;
@@ -114,7 +114,7 @@ table {
     
 
 .containerr{
-    padding-top: 40px;
+    padding-top: 38px;
     display: flex;
     /* background-color: pink; */
    
@@ -187,13 +187,13 @@ h3{
     margin-left: 20px;
     padding-left: 40px;
     padding-right: 20px;
-    padding-top: 78px;
+    padding-top: 68px;
     padding-bottom: 30px;
     width: 500px;
     height: 400px;
 }
 .input-field .input {
-    height: 45px;
+    height: 53px;
     width: 90%;
     border: none;
     border-radius: 30px;
@@ -244,7 +244,7 @@ i {
     /* margin-left: 20px; */
     padding-left: -3px;
     padding-right: 51px;
-    padding-top: 78px;
+    padding-top: 68px;
     padding-bottom: 30px;
     width: 500px;
     height: 400px;
@@ -362,7 +362,7 @@ i {
       </div>
       <div class="input-field">
         <input type="button" class="submit" value="sumbit" id="" required>
-        <i class='bx bx-home-alt'></i>
+      
     </div>
        </div>
   
