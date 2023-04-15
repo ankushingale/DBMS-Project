@@ -6,6 +6,11 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="dashboard.css">
+    
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    	    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    	
     <title>Document</title>
     <style type="text/css">
     *{
@@ -20,9 +25,7 @@ body{
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    
-
-    
+       
 }
 /* SIDE BAR CSS */
 .header{
@@ -265,7 +268,7 @@ h1{
       </div>
     <div class="box1">
                          
-    <table>
+    <table class="table" id="tbl_exporttable_to_xls"> 
         
         <tr>
             <th>sr</th>
@@ -346,7 +349,7 @@ h1{
         </tr> 
     </table> 
     <div class="result-btn">
-    <div class="save-btn1"><input type="button" value="download pdf" id="btnExport" onclick="ExportToExcel()"  class="btn11"></div>
+    <div class="save-btn1"><input type="button" value="download pdf" id="btnExport" onclick="Export()"  class="btn11"></div>
     <div class="save-btn"><input type="button" value="download excel" class="btn11"></div>
     <script type="text/javascript">
     function Export() {
@@ -365,6 +368,7 @@ h1{
             }
         });
     }
+    
 </script>
     </div> 
 </div>
