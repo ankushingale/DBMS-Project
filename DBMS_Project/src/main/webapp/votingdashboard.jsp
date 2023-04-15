@@ -17,7 +17,8 @@
     /* it is use to remove the padding of nav bar or over all extra padding */
 }
 body{
-    background-image: url("1.jpg") !important;
+  /*   background-image: url("1.jpg") !important; */
+   background-color:cadetblue;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

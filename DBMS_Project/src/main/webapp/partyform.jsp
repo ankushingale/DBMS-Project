@@ -69,7 +69,8 @@
   color: black;
 }
 body{
-    background-image: url("1.jpg");
+   /*  background-image: url("1.jpg"); */
+    background-color:cadetblue;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

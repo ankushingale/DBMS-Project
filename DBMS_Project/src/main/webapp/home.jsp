@@ -21,7 +21,8 @@
 }
 /*hi*/
 body{
-    background-image: url("1.jpg") !important;
+ /*    background-image: url("1.jpg") !important; */
+    background-color:cadetblue;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -107,7 +108,7 @@ padding-left:0px;
         <a href="adminlogin.jsp" class="cta"><input type="submit" class="submit" value="Admin Login" id=""></a>
         </div>
         <div class="btncon2">
-       <a href="votingpanel.jsp" class="cta"><input type="submit" class="submit1" value="User Login" id=""></a>
+       <a href="userlogin.jsp" class="cta"><input type="submit" class="submit1" value="User Login" id=""></a>
        </div>
        </div>
     </header>

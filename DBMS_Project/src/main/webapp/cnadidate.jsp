@@ -24,7 +24,8 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js
     box-sizing: border-box;
 }
 body{
-    background-image: url("1.jpg");
+   /*  background-image: url("1.jpg"); */
+    background-color:cadetblue;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
