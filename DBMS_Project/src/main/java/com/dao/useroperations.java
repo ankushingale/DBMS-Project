@@ -8,11 +8,13 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpSession;
 
 import com.model.Voterregistration;
+import com.model.votingmodel;
 
 public class useroperations {
 	Connection con=null;
 	PreparedStatement ps= null;
 	ResultSet rs=null;
+	ResultSet rs1=null;
 	int i=0;
 	public int voter_registration(Voterregistration vtr)
 	{
@@ -80,7 +82,7 @@ public class useroperations {
 			else
 			{
 //				System.out.println("Inside insert");
-
+				
 				try {
 					ps=con.prepareStatement("insert into loginstatus values(?,?,?,?)");
 					ps.setString(1,rs.getString(1));
@@ -134,4 +136,71 @@ public class useroperations {
 			return rs;
 		}
 	
+		public ResultSet displayData(String voter_id)
+		{
+			
+			con=Dbconnection.getConnection();
+
+			System.out.println("inside displayUserData");
+			System.out.println(voter_id);
+			
+			try {
+				PreparedStatement ps=con.prepareStatement("select * from voter_Registration_Details where voter_id=?");
+				ps.setString(1,voter_id);
+				
+				rs1=ps.executeQuery();
+				
+				if(rs1.next())
+				{
+					System.out.println("data is present");
+				}
+				else
+				{
+					System.out.println("No data");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+
+			return rs1;
+			
+		}
+		
+		public ResultSet diaplayCandidateData() {
+			con=Dbconnection.getConnection();
+
+//			String query="select * from candidates where candidate_id=?";
+			
+			try {
+				ps=con.prepareStatement("select * from candidates");
+				rs=ps.executeQuery();
+//				rs=ps.executeQuery(query);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return rs;
+		}
+		
+		public int insertVotingDetails(votingmodel vm)
+		{
+			con=Dbconnection.getConnection();
+
+			try {
+				ps=con.prepareStatement("insert into votingstatus values(?,?,?,?)");
+				ps.setString(1,vm.getVoter_id());
+				ps.setString(2,vm.getVoter_name());
+				ps.setString(3,vm.getPolitician_name());
+				ps.setString(4,vm.getParty());
+//			System.out.println("Heklo");
+				i=ps.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return i;
+		}
 }

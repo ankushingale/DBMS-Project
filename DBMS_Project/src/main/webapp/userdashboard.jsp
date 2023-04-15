@@ -1,5 +1,7 @@
 
 <!DOCTYPE html>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="com.dao.useroperations"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,6 +14,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+     
      
     <title>Document</title>
     <link rel="stylesheet" href="css/voting.css">
@@ -296,15 +300,67 @@ i {
         
            
     </header>
+<% 
+ if(!session.isNew())
+	{
+		session=request.getSession();
+		String login=(String)session.getAttribute("login-status");
 
+		String value=(String)session.getAttribute("admin_login_status");
+		/* System.out.println(value); */
+		if(login=="true")
+		{
+			%>
+			<script type="text/javascript">
+		
+     						Swal.fire({
+       						//  position: 'top-end',
+        					icon: 'success',
+/*         					title:'Oops..!!',
+ */        					text: 'user login Successfully',
+/*         					showConfirmButton: true,
+ */        						
+      					})
+      					
+      					
+  
+   							</script>	
 
+  			<% 
+
+		}
+			session.removeAttribute("login-status");
+
+		if(value=="false")
+		{
+			%>
+			<div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+             wrong Credentials.
+            </div>
+  			<% 
+		}
+		session.removeAttribute("admin_login_status");
+
+	}
+%>
+
+<%
+	System.out.println("on userdashboard page");
+
+	String voter_id=(String)session.getAttribute("voter_id");
+ 	System.out.println(voter_id);
+ 	useroperations us=new useroperations();
+	ResultSet rs=us.displayData(voter_id);
+	
+	%>
 <form action="">
 <div class="box2">
   <div class="containerr" >
   <div>
     <img src="user-removebg-preview.png" alt="fuck you yogesh sharma" >
-     <h3><b>username</b></h3>
-     <input type="button" value="log out" class="btn1">
+      <h3><b><%=rs.getString(2) %></b></h3>
+      <input type="button" value="log out" class="btn1">
   </div>
     
   </div>
@@ -312,22 +368,22 @@ i {
    
     <div>
         <div class="input-field">
-            <input type="text" class="input" placeholder="full name" id="" required>
+            <input type="text" value="<%=rs.getString(2) %>" class="input" placeholder="full name" id="" required>
+             <i class='bx bx-envelope'></i>
+        </div>
+
+        <div class="input-field">
+            <input type="email" class="input" value="<%=rs.getString(3) %>"  placeholder="email" id="" required>
             <i class='bx bx-envelope'></i>
         </div>
 
         <div class="input-field">
-            <input type="email" class="input" placeholder="email" id="" required>
-            <i class='bx bx-envelope'></i>
-        </div>
-
-        <div class="input-field">
-            <input type="number" class="input" placeholder="Adhar_Card no" id="input-field" required>
+            <input type="number" class="input" value="<%=rs.getString(4) %>"  placeholder="Adhar_Card no" id="input-field" required>
             <i class='bx bx-id-card'></i>
         </div>
         
         <div class="input-field">
-           <input type="number" class="input" placeholder="phone no" id="input-field1" required>
+           <input type="number" class="input" value="<%=rs.getString(9) %>" placeholder="phone no" id="input-field1" required>
           <i class='bx bx-mobile-alt'></i> 
        </div>
       
@@ -339,11 +395,11 @@ i {
     
     <div>
         <div class="input-field">
-        <span class="input">        
+        <span class="input" >        
             <label class="radio-inline">
-            <input type="radio" name="optradio" style="padding-left: 200px;">  male<span style="margin-right: 70px;"></span> </label>
+            <input type="radio" name="optradio" value="<%=rs.getString(7) %>" style="padding-left: 200px;">  male<span style="margin-right: 70px;"></span> </label>
           <label class="radio-inline">
-            <input type="radio" name="optradio"> female<span style="margin-right:200px;"></span>
+            <input type="radio" value="<%=rs.getString(7) %>" name="optradio"> female<span style="margin-right:200px;"></span>
           </label>
           
         </span>
@@ -353,11 +409,11 @@ i {
        
   
        <div class="input-field">
-           <input type="date" class="input" placeholder="conform Password" id="" required>
+           <input type="date" class="input" value="<%=rs.getString(5) %>" placeholder="conform Password" id="" required>
            <i class='bx bx-calendar'></i>
        </div>
        <div class="input-field">
-          <input type="text" class="input" placeholder="address" id="" required>
+          <input type="text" class="input" value="<%=rs.getString(10) %>" placeholder="address" id="" required>
           <i class='bx bx-home-alt'></i>
       </div>
       <div class="input-field">
@@ -373,16 +429,12 @@ i {
 </div>
 </form>
   
-
+	
     <!-- <h1>Welcome to Online Voting System</h1> -->
     
     
      
-
-
-
-
-
+	
 
 </body>
 </html>

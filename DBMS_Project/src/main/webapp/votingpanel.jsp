@@ -1,5 +1,7 @@
 
 <!DOCTYPE html>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="com.dao.useroperations"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -149,10 +151,35 @@ table {
        </div>
     </header>
 
+<%
+useroperations us=new useroperations();
 
+	String voter_id=(String)session.getAttribute("voter_id");
+	System.out.println("session value is :"+voter_id);
+	ResultSet rs1=us.displayData(voter_id);
+/* 	String voter_id=rs1.getString(1);
+
+ */	
+ 	String voter_id1=rs1.getString(1);
+	String voter_name=rs1.getString(2);
+
+	System.out.println(rs1.getString(1));
+
+	System.out.println(rs1.getString(2));
+
+ 	
+
+	ResultSet rs=us.diaplayCandidateData();
+	int cnt=1;
+	while(rs.next())
+	{
+	%>
 
     <div class="box1">
+    
         <div class="container">
+        
+        
     <table>
         <tbody>
         <tr>
@@ -163,47 +190,13 @@ table {
              <th>Do Vote</th>
         </tr>
         <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>b.j.p</td>
-            <td><input type="button" value="vote" class="btn"></td>
+            <td><%=cnt %></td>
+            <td><%=rs.getString(2) %></td>
+            <td><%=rs.getString(4) %></td>
+            
+            <td><a href="votingcontroller?voter_id=<%=rs1.getString(1)%>&voter_name=<%=rs1.getString(2)%>&candidate_name=<%=rs.getString(2)%>&party=<%=rs.getString(4)%>"><input type="button" value="vote" class="btn"></a></td>
         </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>b.j.p</td>
-            <td><input type="button" value="vote" class="btn"></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>b.j.p</td>
-            <td><input type="button" value="vote" class="btn"></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>b.j.p</td>
-            <td><input type="button" value="vote" class="btn"></td>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>b.j.p</td>
-            <td><input type="button" value="vote" class="btn"></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>b.j.p</td>
-            <td><input type="button" value="vote" class="btn"></td>
-        </tr>
-         <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>b.j.p</td>
-            <td><input type="button" value="vote" class="btn"></td>
-        </tr>
-        
+      
         </tbody>
     </table> 
 </div>
@@ -220,8 +213,10 @@ table {
 
 
 
-
-
+<% 
+	
+	}
+%>
 
 </body>
 </html>

@@ -49,7 +49,8 @@ public class controller extends HttpServlet {
 				
 
 //				System.out.println("Valid details");
-				
+				HttpSession session1=request.getSession();
+				session1.setAttribute("voter_id",rs.getString(1));
 				int i=us.insert(rs,username);
 
 				if(i<2)
@@ -57,7 +58,7 @@ public class controller extends HttpServlet {
 					session=request.getSession();
 					session.setAttribute("login-status", "true");
 
-					response.sendRedirect("home.jsp");
+					response.sendRedirect("userdashboard.jsp");
 				}
 				else
 				{
