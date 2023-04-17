@@ -1,3 +1,5 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="com.dao.adminoperations"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -257,8 +259,13 @@ h1{
             <li><a href="cnadidate.jsp" target="_self"><i class='bx bx-user-circle'></i></i><p>Candidate</p></a></li>
             <li><a href="live-user.jsp" target="_self"><i class='bx bx-user-check'></i></i><p>Live_users</p></a></li>
             <li><a href="partys.jsp" target="_self"><i class='bx bx-group'></i><p>Party's</p></a></li>
+<<<<<<< HEAD
             <li><a href="result.jsp" target="_self"><i class='bx bx-line-chart'></i></i><p>voting_status</p></a></li>
             <li><a href="finalresult.jsp"><i class='bx bx-party'></i><p>Result</p></a></li> 
+=======
+            <li><a href="result.jsp"><i class='bx bx-party'></i><p>Voting Status</p></a></li> 
+            <li><a href="result.jsp"><i class='bx bx-party'></i><p>Result</p></a></li> 
+>>>>>>> 94b6a7e2db63ec5dfd0fd1a26568f86ab0f3f84a
             <div class="active"></div>       
         </ul>
     </div>
@@ -270,8 +277,10 @@ h1{
     <div class="box1">
                          
     <table class="table" id="tbl_exporttable_to_xls"> 
-        
+       
+        	
         <tr>
+<<<<<<< HEAD
             <th>sr</th>
             <th>name </th> 
             <th>e-mail</th>
@@ -281,8 +290,24 @@ h1{
             <th>date of birth</th>
             <th>address</th>
          
+=======
+            <th>Sr.no</th>
+            <th>Voter ID </th> 
+            <th>Voter Name</th>
+            <th>Politician Name</th>
+            <th>Politician Party</th>
+            
+>>>>>>> 94b6a7e2db63ec5dfd0fd1a26568f86ab0f3f84a
         </tr>
+         <%
+        	adminoperations aop=new adminoperations();
+        	ResultSet rs=aop.displayVotingdata();
+        	int cnt=1;
+        	while(rs.next())
+        	{
+        		%>
         <tr>
+<<<<<<< HEAD
             <td>1</td>
             <td>sujal chavan</td>
             <td>sujal@gmail.com</td>
@@ -348,6 +373,18 @@ h1{
             <td>nashik</td>
             
         </tr> 
+=======
+            <td><%=cnt%></td>
+            <td><%=rs.getString(1) %></td>
+            <td><%=rs.getString(2) %></td>
+            <td><%=rs.getString(3) %></td>
+            <td><%=rs.getString(4) %></td>
+        </tr>
+        <% 
+        cnt++;
+       }
+        %>
+>>>>>>> 94b6a7e2db63ec5dfd0fd1a26568f86ab0f3f84a
     </table> 
     <div class="result-btn">
     <div class="save-btn1"><input type="button" value="download pdf" id="btnExport" onclick="Export()"  class="btn11"></div>

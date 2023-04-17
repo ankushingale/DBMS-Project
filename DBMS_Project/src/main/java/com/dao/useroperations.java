@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.http.HttpSession;
 
@@ -187,20 +189,79 @@ public class useroperations {
 		
 		public int insertVotingDetails(votingmodel vm)
 		{
-			con=Dbconnection.getConnection();
-
+			int i=0;
+			ResultSet rs3=checkVotingGiven(vm);
 			try {
-				ps=con.prepareStatement("insert into votingstatus values(?,?,?,?)");
+				if(rs3.next())
+				{
+					i=2;
+				}
+				else
+				{
+					con=Dbconnection.getConnection();
+
+					try {
+						ps=con.prepareStatement("insert into votingstatus values(?,?,?,?,?)");
+						ps.setString(1,vm.getVoter_id());
+						ps.setString(2,vm.getVoter_name());
+						ps.setString(3,vm.getPolitician_name());
+						ps.setString(4,vm.getParty());
+						ps.setString(5, getDate());
+//				System.out.println("Heklo");
+						i=ps.executeUpdate();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+			return i;
+		}
+		
+		public ResultSet checkVotingGiven(votingmodel vm)
+		{
+			con=Dbconnection.getConnection();
+			
+			try {
+				PreparedStatement ps=con.prepareStatement("select * from votingstatus where voter_id=?");
 				ps.setString(1,vm.getVoter_id());
-				ps.setString(2,vm.getVoter_name());
-				ps.setString(3,vm.getPolitician_name());
-				ps.setString(4,vm.getParty());
-//			System.out.println("Heklo");
+				
+				rs=ps.executeQuery();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return rs;
+		}
+		
+		public int deleteUser(String voter_id)
+		{
+			con=Dbconnection.getConnection();
+			
+			try {
+				PreparedStatement ps=con.prepareStatement("delete from loginstatus where voter_id=?");
+				ps.setString(1,voter_id);
+				
 				i=ps.executeUpdate();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 			return i;
 		}
+		
+		
+		public String getDate()
+		{
+			
+			   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+			   LocalDateTime now = LocalDateTime.now();
+			   return dtf.format(now);
+		}  
 }

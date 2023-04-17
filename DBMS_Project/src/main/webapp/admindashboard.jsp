@@ -3,12 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+    
     <link rel="stylesheet" href="dashboard.css">
     <title>Document</title>
     <style type="text/css">
@@ -239,8 +240,14 @@ margin-right:15px;
             <li><a href="cnadidate.jsp" target="_self"><i class='bx bx-user-circle'></i></i><p>Candidate</p></a></li>
             <li><a href="live-user.jsp" target="_self"><i class='bx bx-user-check'></i></i><p>Live_users</p></a></li>
             <li><a href="partys.jsp" target="_self"><i class='bx bx-group'></i><p>Party's</p></a></li>
+<<<<<<< HEAD
             <li><a href="result.jsp" target="_self"><i class='bx bx-line-chart'></i></i><p>voting_status</p></a></li>
             <li><a href="finalresult.jsp"><i class='bx bx-party'></i><p>Result</p></a></li> 
+=======
+                        <li><a href="result.jsp"><i class='bx bx-party'></i><p>Voting Status</p></a></li>
+            
+            <li><a href="result.jsp"><i class='bx bx-party'></i><p>Result</p></a></li> 
+>>>>>>> 94b6a7e2db63ec5dfd0fd1a26568f86ab0f3f84a
             <div class="active"></div>       
         </ul>
     </div>
