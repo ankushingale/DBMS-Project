@@ -355,7 +355,19 @@ i {
 	}
 %>
 
+<<<<<<< HEAD
+<%
 
+6
+	String voter_id=(String)session.getAttribute("voter_id");
+ 	System.out.println(voter_id);
+ 	useroperations us=new useroperations();
+	ResultSet rs=us.displayData(voter_id);
+	
+	%>
+=======
+
+>>>>>>> 94b6a7e2db63ec5dfd0fd1a26568f86ab0f3f84a
 <form action="">
 <div class="box2">
   <div class="containerr" >

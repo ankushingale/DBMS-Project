@@ -190,7 +190,7 @@ table {
 .heading1{
     padding-top: 20%;
     padding-bottom: 10px;
-    padding-left: 150px;
+        padding-left: 179px;
     text-align: center;
     font-weight: bold;
     font-size: 40px;
@@ -507,8 +507,8 @@ label {
             <li><a href="cnadidate.jsp" target="_self"><i class='bx bx-user-circle'></i></i><p>Candidate</p></a></li>
             <li><a href="live-user.jsp" target="_self"><i class='bx bx-user-check'></i></i><p>Live_users</p></a></li>
             <li><a href="partys.jsp" target="_self"><i class='bx bx-group'></i><p>Party's</p></a></li>
-            
-            <li><a href="result.jsp"><i class='bx bx-party'></i><p>Result</p></a></li> 
+            <li><a href="result.jsp" target="_self"><i class='bx bx-line-chart'></i></i><p>voting_status</p></a></li>
+            <li><a href="finalresult.jsp"><i class='bx bx-party'></i><p>Result</p></a></li> 
             <div class="active"></div>       
         </ul>
     </div>

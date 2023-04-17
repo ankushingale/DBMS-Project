@@ -1,32 +1,31 @@
-<%@page import="com.dao.useroperations"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="com.dao.adminoperations"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="dashboard.css">
-    <title>Document</title>
-    	<script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
     		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
     	    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     	
-    
+    <title>Document</title>
     <style type="text/css">
     *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body{
-   /*  background-image: url("1.jpg"); */
-    background-color:cadetblue;
+   background-color:cadetblue;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    background-repeat: no-repeat;    
+    background-repeat: no-repeat;
+       
 }
 /* SIDE BAR CSS */
 .header{
@@ -94,7 +93,7 @@ body{
     color: #093a96;
     background: rgba(255,255,255,0.7);
     transition: 0.100s;
-    width:200px;
+     width: 200px;
 }
 
 
@@ -158,6 +157,7 @@ table {
     color: #fff;
 
 }
+
 /* update button */
 .btn1{
     border: none;
@@ -209,159 +209,86 @@ h1{
     color:a liceblue;
 
 }
+.result-btn{
+    display: flex;
+    
+
+}
+.btn11{
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    height: 40px;
+    outline: none;
+    width:140px;
+    color: black;
+    background: rgba(255,255,255,0.7);
+    cursor: pointer;
+    transition: .3s ;
+    margin: 0;
+    padding: 0;
+}
+
+.btn11:hover{
+    box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+}
+.save-btn1{
+    margin-top: 36px;
+    margin-left: 100px;
+}
+.save-btn{
+    margin-left: 10px;
+}
 </style>
 <meta charset="ISO-8859-1">
 
-<title> Admin|Dashboard|Registeredusers</title>
-
-<script type="text/javascript">
-function ExportToExcel(type, fn, dl) {
-	console.log("Hello in excel")
-       var elt = document.getElementById('tbl_exporttable_to_xls');
-       var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
-       return dl ?
-         XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
-         XLSX.writeFile(wb, fn || ('Registration Details.' + (type || 'xlsx')));
-    }
-</script>
+<title>Admin | Dashboard</title>
 
 </head>
 <body>
-
-
-	
     <div class="header">
         <div class="side-nav">
-        
-        <%
-    	int cnt1=0;
-
-        	adminoperations aop1=new adminoperations();
-        	ResultSet rs1=aop1.votingCount();
-		while(rs1.next())
-		{
-			cnt1++;
-		}
-        	
-        %>
-            <h2 style="color: aliceblue;">count : <%=cnt1 %></h2>
+            <h2 style="color: aliceblue;">count : 000</h2>
         </div>
         <ul class="nav-link">
+
              <li><a href="admindashboard.jsp" target="_self"><i class='bx bx-home-alt'></i><p>Dashboard</p></a></li>
             <li><a href="registration.jsp" target="_self"><i class='bx bx-registered'></i><p>Registrations</p></a></li>
             <li><a href="cnadidate.jsp" target="_self"><i class='bx bx-user-circle'></i></i><p>Candidate</p></a></li>
-            <li><a href="live-user.jsp" target="_self"><i class='bx bx-user-check'></i></i><p>Live_users</p></a></li>
+            <li><a href="live-user.jsp" target="_self"><i class='bx bx-user-check'></i></i><p>Live users</p></a></li>
             <li><a href="partys.jsp" target="_self"><i class='bx bx-group'></i><p>Party's</p></a></li>
-<<<<<<< HEAD
             <li><a href="result.jsp" target="_self"><i class='bx bx-line-chart'></i></i><p>voting_status</p></a></li>
             <li><a href="finalresult.jsp"><i class='bx bx-party'></i><p>Result</p></a></li> 
-=======
-                        <li><a href="result.jsp"><i class='bx bx-party'></i><p>Voting Status</p></a></li>
             
-            <li><a href="result.jsp"><i class='bx bx-party'></i><p>Result</p></a></li>  
->>>>>>> 94b6a7e2db63ec5dfd0fd1a26568f86ab0f3f84a
             <div class="active"></div>       
         </ul>
     </div>
 
-    <div class="heading">registrations</div>
-    
 
+<div class="heading1">Result</div>
+    
+      </div>
     <div class="box1">
                          
-    <table class="table" id="tbl_exporttable_to_xls">
-       
+    <table class="table" id="tbl_exporttable_to_xls"> 
+        
         <tr>
             <th>sr</th>
-            <th>name </th> 
-            <th>e-mail</th>
-            <th>Adhar_Card</th>
-            <th>phone no</th>
-            <th>gender</th>
-            <th>date of birth</th>
-            <th>address</th>
+            <th>candidate</th> 
+            <th>party</th>
+            <th>voting count</th>
         </tr>
-         <%
-        adminoperations aop=new adminoperations();
-        ResultSet rs= aop.displayvoters();
-    	int cnt=1;
-        while(rs.next())
-        {
-        	%>
-      	
-        <tr>
-            <td><%=cnt %></td>
-            <td><%=rs.getString(2) %></td>
-            <td><%=rs.getString(3) %></td>
-            <td><%=rs.getString(4) %></td>
-            <td><%=rs.getString(9) %></td>
-            <td><%=rs.getString(7) %></td>
-            <td><%=rs.getString(5) %></td>
-            <td><%=rs.getString(10) %></td>
-        </tr>
-        <% 
-        cnt++;
-        }
-        %>
+        <tr> 
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
         
-       <!--  <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
         </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>sujal chavan</td>
-            <td>sujal@gmail.com</td>
-            <td>3456789022</td>
-            <td>7218551518</td>
-            <td>male</td>
-            <td>31-1-2003</td>
-            <td>nashik</td>
-            <td><input type="button" value="update" class="btn1"></td>
-        </tr>  -->
-    </table> 
-    
-    <div class="save-btn"><input type="submit" value="download" id="btnExport" onclick="Export()" title="Pdf" class="btn1"></div>
+           </table> 
+    <div class="result-btn">
+    <div class="save-btn1"><input type="button" value="download pdf" id="btnExport" onclick="Export()"  class="btn11"></div>
+    <div class="save-btn"><input type="button" value="download excel" class="btn11"></div>
     <script type="text/javascript">
     function Export() {
     	
@@ -375,10 +302,11 @@ function ExportToExcel(type, fn, dl) {
                         width: 500
                     }]
                 };
-                pdfMake.createPdf(docDefinition).download("Registration Details.pdf");
+                pdfMake.createPdf(docDefinition).download("Candidate Details.pdf");
             }
         });
     }
-</script>
     
+</script>
+    </div> 
 </div>

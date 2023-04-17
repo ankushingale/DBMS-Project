@@ -222,11 +222,16 @@ h1{
             <li><a href="admindashboard.jsp" target="_self"><i class='bx bx-home-alt'></i><p>Dashboard</p></a></li>
             <li><a href="registration.jsp" target="_self"><i class='bx bx-registered'></i><p>Registrations</p></a></li>
             <li><a href="cnadidate.jsp" target="_self"><i class='bx bx-user-circle'></i></i><p>Candidate</p></a></li>
-            <li><a href="live-user.jsp" target="_self"><i class='bx bx-user-check'></i></i><p>Live users</p></a></li>
+            <li><a href="live-user.jsp" target="_self"><i class='bx bx-user-check'></i></i><p>Live_users</p></a></li>
             <li><a href="partys.jsp" target="_self"><i class='bx bx-group'></i><p>Party's</p></a></li>
+<<<<<<< HEAD
+            <li><a href="result.jsp" target="_self"><i class='bx bx-line-chart'></i></i><p>voting_status</p></a></li>
+            <li><a href="finalresult.jsp"><i class='bx bx-party'></i><p>Result</p></a></li> 
+=======
                         <li><a href="result.jsp"><i class='bx bx-party'></i><p>Voting Status</p></a></li>
             
             <li><a href="result.jsp"><i class='bx bx-party'></i><p>Result</p></a></li> 
+>>>>>>> 94b6a7e2db63ec5dfd0fd1a26568f86ab0f3f84a
             <div class="active"></div>       
         </ul>
     </div>

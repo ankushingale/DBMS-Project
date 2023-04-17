@@ -257,10 +257,15 @@ h1{
              <li><a href="admindashboard.jsp" target="_self"><i class='bx bx-home-alt'></i><p>Dashboard</p></a></li>
             <li><a href="registration.jsp" target="_self"><i class='bx bx-registered'></i><p>Registrations</p></a></li>
             <li><a href="cnadidate.jsp" target="_self"><i class='bx bx-user-circle'></i></i><p>Candidate</p></a></li>
-            <li><a href="live-user.jsp" target="_self"><i class='bx bx-user-check'></i></i><p>Live users</p></a></li>
+            <li><a href="live-user.jsp" target="_self"><i class='bx bx-user-check'></i></i><p>Live_users</p></a></li>
             <li><a href="partys.jsp" target="_self"><i class='bx bx-group'></i><p>Party's</p></a></li>
+<<<<<<< HEAD
+            <li><a href="result.jsp" target="_self"><i class='bx bx-line-chart'></i></i><p>voting_status</p></a></li>
+            <li><a href="finalresult.jsp"><i class='bx bx-party'></i><p>Result</p></a></li> 
+=======
             <li><a href="result.jsp"><i class='bx bx-party'></i><p>Voting Status</p></a></li> 
             <li><a href="result.jsp"><i class='bx bx-party'></i><p>Result</p></a></li> 
+>>>>>>> 94b6a7e2db63ec5dfd0fd1a26568f86ab0f3f84a
             <div class="active"></div>       
         </ul>
     </div>
@@ -275,12 +280,24 @@ h1{
        
         	
         <tr>
+<<<<<<< HEAD
+            <th>sr</th>
+            <th>name </th> 
+            <th>e-mail</th>
+            <th>Adhar_Card</th>
+            <th>phone no</th>
+            <th>gender</th>
+            <th>date of birth</th>
+            <th>address</th>
+         
+=======
             <th>Sr.no</th>
             <th>Voter ID </th> 
             <th>Voter Name</th>
             <th>Politician Name</th>
             <th>Politician Party</th>
             
+>>>>>>> 94b6a7e2db63ec5dfd0fd1a26568f86ab0f3f84a
         </tr>
          <%
         	adminoperations aop=new adminoperations();
@@ -290,6 +307,73 @@ h1{
         	{
         		%>
         <tr>
+<<<<<<< HEAD
+            <td>1</td>
+            <td>sujal chavan</td>
+            <td>sujal@gmail.com</td>
+            <td>3456789022</td>
+            <td>7218551518</td>
+            <td>male</td>
+            <td>31-1-2003</td>
+            <td>nashik</td>
+            
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>sujal chavan</td>
+            <td>sujal@gmail.com</td>
+            <td>3456789022</td>
+            <td>7218551518</td>
+            <td>male</td>
+            <td>31-1-2003</td>
+            <td>nashik</td>
+            
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>sujal chavan</td>
+            <td>sujal@gmail.com</td>
+            <td>3456789022</td>
+            <td>7218551518</td>
+            <td>male</td>
+            <td>31-1-2003</td>
+            <td>nashik</td>
+           
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>sujal chavan</td>
+            <td>sujal@gmail.com</td>
+            <td>3456789022</td>
+            <td>7218551518</td>
+            <td>male</td>
+            <td>31-1-2003</td>
+            <td>nashik</td>
+       
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>sujal chavan</td>
+            <td>sujal@gmail.com</td>
+            <td>3456789022</td>
+            <td>7218551518</td>
+            <td>male</td>
+            <td>31-1-2003</td>
+            <td>nashik</td>
+          
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>sujal chavan</td>
+            <td>sujal@gmail.com</td>
+            <td>3456789022</td>
+            <td>7218551518</td>
+            <td>male</td>
+            <td>31-1-2003</td>
+            <td>nashik</td>
+            
+        </tr> 
+=======
             <td><%=cnt%></td>
             <td><%=rs.getString(1) %></td>
             <td><%=rs.getString(2) %></td>
@@ -300,6 +384,7 @@ h1{
         cnt++;
        }
         %>
+>>>>>>> 94b6a7e2db63ec5dfd0fd1a26568f86ab0f3f84a
     </table> 
     <div class="result-btn">
     <div class="save-btn1"><input type="button" value="download pdf" id="btnExport" onclick="Export()"  class="btn11"></div>
