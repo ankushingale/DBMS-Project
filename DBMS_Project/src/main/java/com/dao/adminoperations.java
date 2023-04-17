@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import com.model.CandidateModel1;
 import com.model.partymodel;
@@ -359,6 +361,25 @@ public class adminoperations {
 				}
 				return i;
 			}
+	
+	public ResultSet displayVotingdata()
+	{
+		Connection con=Dbconnection.getConnection();
+		String query="select * from votingstatus";
+		ResultSet rs=null;
+		try {
+			Statement stmt=con.createStatement();
+			 rs=stmt.executeQuery(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return rs;
+	}
+
+		 
+
 }
 		
 	

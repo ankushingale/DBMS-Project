@@ -14,6 +14,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Document</title>
     <link rel="stylesheet" href="css/voting.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+    
     <style type="text/css">
     
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300&display=swap');
@@ -36,7 +38,23 @@ body{
     background-repeat: no-repeat; */
     
 }
+.alert {
+  padding: 10px;
+  background-color: #f44336;
+  color: white;
+  border-radius: 10px
+}
 
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 20px;
+  line-height: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 .submit{
     border: none;
     border-radius: 30px;
@@ -112,7 +130,55 @@ table {
 
 </head>
 <body>
-     
+       <% 
+   if(!session.isNew())
+	{
+		session=request.getSession();
+		String vote_success=(String)session.getAttribute("vote-success");
+		String vote_fail=(String)session.getAttribute("vote-fail");
+		/* System.out.println(value); */
+		if(vote_success=="true")
+		{
+			%>
+			
+							<script type="text/javascript">
+		
+     						Swal.fire({
+       						//  position: 'top-end',
+        					icon: 'success',
+/*         					title:'Oops..!!',
+ */        					text: 'vote given Successfully',
+/*         					showConfirmButton: true,
+ */        						
+      					})
+      					
+      					
+  
+   							</script>	
+   							
+<% 
+
+session.removeAttribute("vote-success");
+
+		}
+		
+		if(vote_fail=="true")
+		{
+			%>
+			<div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+             voter is already given....You can vote only once....!!
+            </div>
+            <% 
+ 	       session.removeAttribute("vote_fail");
+
+		}
+
+
+
+	}
+
+%>
     <header>
  
         <img class="logo" src="./images/logo.svg" alt="">
@@ -133,7 +199,7 @@ table {
      
        <div class="btncon">
        <div class="btncon1">
-        <a href="userdashboard.jsp" class="cta"><input type="submit" class="submit" value="View" id=""></a>
+        <a href="userdashboard.jsp" class="cta"><input type="submit" class="submit" value="Home" id=""></a>
         </div>
 
 

@@ -272,7 +272,15 @@ i {
 
 </head>
 <body>
-     
+     <%
+	System.out.println("on userdashboard page");
+
+	String voter_id=(String)session.getAttribute("voter_id");
+ 	System.out.println(voter_id);
+ 	useroperations us=new useroperations();
+	ResultSet rs=us.displayData(voter_id);
+	
+	%>
     <header>
  
         <img class="logo" src="./images/logo.svg" alt="">
@@ -292,7 +300,9 @@ i {
         </nav>
         <div class="btncon">
         <div class="btncon1">
-        <a href="votingpanel.jsp" class="cta"><input type="submit" class="submit2" value="View" id=""></a>
+        <a href="votingpanel.jsp" class="cta"><input type="submit" class="submit2" value="Vote" id=""></a>
+              <a href="deleteuser?voter_id=<%=rs.getString(1)%>"><input type="submit" class="submit2" value="log out"></a>
+        
         </div>
 
         
@@ -345,23 +355,17 @@ i {
 	}
 %>
 
-<%
-	System.out.println("on userdashboard page");
 
-	String voter_id=(String)session.getAttribute("voter_id");
- 	System.out.println(voter_id);
- 	useroperations us=new useroperations();
-	ResultSet rs=us.displayData(voter_id);
-	
-	%>
 <form action="">
 <div class="box2">
   <div class="containerr" >
   <div>
-    <img src="user-removebg-preview.png" alt="fuck you yogesh sharma" >
+    <img src="user-removebg-preview.png" alt="" >
       <h3><b><%=rs.getString(2) %></b></h3>
-      <input type="button" value="log out" class="btn1">
-  </div>
+      
+      
+<%--       <a href="deleteuser?voter_id=<%=rs.getString(1)%>"><input type="submit" value="log out" class="btn1"></a>
+ --%>  </div>
     
   </div>
   <div class="containerrr">

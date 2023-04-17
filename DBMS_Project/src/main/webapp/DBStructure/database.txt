@@ -54,13 +54,11 @@ head_quarters varchar(255)
 
 create table votingstatus
 (
-
-voter_id varchar(255),
-voter_email varchar(255) primary key,
-party_vote varchar(255),
-politician_vote varchar(255),
-date_of_vote varchar(255)
-
+	voter_id varchar(255),
+	voter_name varchar(255),
+	politician_name varchar(255),
+	politician_party varchar(255),
+	time_date varchar(255)
 );
 
 

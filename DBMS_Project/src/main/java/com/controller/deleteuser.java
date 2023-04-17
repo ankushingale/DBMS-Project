@@ -9,19 +9,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.dao.useroperations;
-import com.model.votingmodel;
 
 /**
- * Servlet implementation class votingcontroller
+ * Servlet implementation class deleteuser
  */
-@WebServlet("/votingcontroller")
-public class votingcontroller extends HttpServlet {
+@WebServlet("/deleteuser")
+public class deleteuser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public votingcontroller() {
+    public deleteuser() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,30 +32,19 @@ public class votingcontroller extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String voter_id=request.getParameter("voter_id");
-		String voter_name=request.getParameter("voter_name");
-		String politician_name=request.getParameter("candidate_name");
-		String party=request.getParameter("party");
 		
-		votingmodel vtm=new votingmodel(voter_id, voter_name, politician_name, party);
 		useroperations us=new useroperations();
-		int i=us.insertVotingDetails(vtm);
-		
-		if(i<2)
+		int i=us.deleteUser(voter_id);
+		if(i>0)
 		{
 			HttpSession session=request.getSession();
-			session.setAttribute("vote-success", "true");
-			response.sendRedirect("votingpanel.jsp");
-			System.out.println("succcess");
+			session.setAttribute("delete-success","true");
+			response.sendRedirect("userlogin.jsp");
 		}
 		else
 		{
-			HttpSession session=request.getSession();
-			session.setAttribute("vote-fail", "true");
-			response.sendRedirect("votingpanel.jsp");
-			System.out.println("Fail");
+			
 		}
-
-		
 	}
 
 	/**

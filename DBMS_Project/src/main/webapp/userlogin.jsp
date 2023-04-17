@@ -6,6 +6,8 @@
      <!-- <link rel="stylesheet" href="css/style.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+    
     <style type="text/css">
     
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300&display=swap');
@@ -233,6 +235,8 @@ table {
 /* 		String admin_login=(String)session.getAttribute("username");
  */		String login_value=(String)session.getAttribute("already-login-status");
 		String value=(String)session.getAttribute("login-status");
+		String deletevalue=(String)session.getAttribute("delete-success");
+
 		/* System.out.println(value); */
 		
 		
@@ -257,6 +261,30 @@ table {
             </div>
   			<% 
   			session.removeAttribute("login-status");
+
+		}
+		
+		if(deletevalue=="true")
+		{
+			%>
+			<script type="text/javascript">
+		
+     						Swal.fire({
+       						//  position: 'top-end',
+        					icon: 'success',
+/*         					title:'Oops..!!',
+ */        					text: 'user logout Successfully',
+/*         					showConfirmButton: true,
+ */        						
+      					})
+      					
+      					
+  
+   							</script>
+   							
+   							
+   							<% 
+				session.removeAttribute("delete-success");
 
 		}
 
