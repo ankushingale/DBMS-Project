@@ -1,3 +1,5 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="com.dao.adminoperations"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -232,7 +234,18 @@ margin-right:15px;
 <body>
     <div class="header">
         <div class="side-nav">
-            <h2 style="color: aliceblue;">count : 000</h2>
+         <%
+    	int cnt1=0;
+
+        	adminoperations aop1=new adminoperations();
+        	ResultSet rs1=aop1.votingCount();
+		while(rs1.next())
+		{
+			cnt1++;
+		}
+        	
+        %>
+            <h2 style="color: aliceblue;">count :<%=cnt1 %></h2>
         </div>
         <ul class="nav-link">
              <li><a href="admindashboard.jsp" target="_self"><i class='bx bx-home-alt'></i><p>Dashboard</p></a></li>
