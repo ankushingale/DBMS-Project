@@ -5,12 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import com.model.CandidateModel1;
 import com.model.partymodel;
-import com.mysql.cj.protocol.Resultset;
 
 public class adminoperations {
 	
@@ -378,6 +375,21 @@ public class adminoperations {
 		return rs;
 	}
 
+	
+	public ResultSet votingCount()
+	{
+		Connection con=Dbconnection.getConnection();
+		try {
+			String query="select * from votingstatus";
+			Statement st=con.createStatement();
+			rs=st.executeQuery(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return rs;
+	}
 		 
 
 }

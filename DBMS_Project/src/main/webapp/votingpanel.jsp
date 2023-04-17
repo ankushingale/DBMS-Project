@@ -158,10 +158,10 @@ table {
    							
 <% 
 
-session.removeAttribute("vote-success");
 
 		}
-		
+		session.removeAttribute("vote-success");
+
 		if(vote_fail=="true")
 		{
 			%>
@@ -170,10 +170,10 @@ session.removeAttribute("vote-success");
              voter is already given....You can vote only once....!!
             </div>
             <% 
- 	       session.removeAttribute("vote_fail");
 
 		}
 
+	       session.removeAttribute("vote_fail");
 
 
 	}
@@ -233,28 +233,29 @@ useroperations us=new useroperations();
 
 	System.out.println(rs1.getString(2));
 
- 	
-
+ 	%>
+	  <div class="box1">
+	    
+      <div class="container">
+      
+      
+  <table>
+      <tbody>
+      <tr>
+          <th>sr</th>
+           <th>name </th>
+           <th>party</th>
+      
+           <th>Do Vote</th>
+      </tr>
+      <%
 	ResultSet rs=us.diaplayCandidateData();
 	int cnt=1;
 	while(rs.next())
 	{
 	%>
 
-    <div class="box1">
-    
-        <div class="container">
-        
-        
-    <table>
-        <tbody>
-        <tr>
-            <th>sr</th>
-             <th>name </th>
-             <th>party</th>
-        
-             <th>Do Vote</th>
-        </tr>
+  
         <tr>
             <td><%=cnt %></td>
             <td><%=rs.getString(2) %></td>
@@ -262,13 +263,16 @@ useroperations us=new useroperations();
             
             <td><a href="votingcontroller?voter_id=<%=rs1.getString(1)%>&voter_name=<%=rs1.getString(2)%>&candidate_name=<%=rs.getString(2)%>&party=<%=rs.getString(4)%>"><input type="button" value="vote" class="btn"></a></td>
         </tr>
-      
+      <% 
+      cnt++;
+	
+	}
+%>
         </tbody>
     </table> 
 </div>
 </div>
 
-</div>
   
 
     <!-- <h1>Welcome to Online Voting System</h1> -->
@@ -279,10 +283,7 @@ useroperations us=new useroperations();
 
 
 
-<% 
-	
-	}
-%>
+
 
 </body>
 </html>

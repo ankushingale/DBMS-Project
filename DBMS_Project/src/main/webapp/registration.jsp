@@ -1,3 +1,4 @@
+<%@page import="com.dao.useroperations"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="com.dao.adminoperations"%>
 <html lang="en">
@@ -231,7 +232,19 @@ function ExportToExcel(type, fn, dl) {
 	
     <div class="header">
         <div class="side-nav">
-            <h2 style="color: aliceblue;">count : 000</h2>
+        
+        <%
+    	int cnt1=0;
+
+        	adminoperations aop1=new adminoperations();
+        	ResultSet rs1=aop1.votingCount();
+		while(rs1.next())
+		{
+			cnt1++;
+		}
+        	
+        %>
+            <h2 style="color: aliceblue;">count : <%=cnt1 %></h2>
         </div>
         <ul class="nav-link">
              <li><a href="admindashboard.jsp" target="_self"><i class='bx bx-home-alt'></i><p>Dashboard</p></a></li>
@@ -239,6 +252,8 @@ function ExportToExcel(type, fn, dl) {
             <li><a href="cnadidate.jsp" target="_self"><i class='bx bx-user-circle'></i></i><p>Candidate</p></a></li>
             <li><a href="live-user.jsp" target="_self"><i class='bx bx-user-check'></i></i><p>Live users</p></a></li>
             <li><a href="partys.jsp" target="_self"><i class='bx bx-group'></i><p>Party's</p></a></li>
+                        <li><a href="result.jsp"><i class='bx bx-party'></i><p>Voting Status</p></a></li>
+            
             <li><a href="result.jsp"><i class='bx bx-party'></i><p>Result</p></a></li>  
             <div class="active"></div>       
         </ul>
