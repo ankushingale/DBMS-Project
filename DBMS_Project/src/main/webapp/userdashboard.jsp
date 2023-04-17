@@ -346,8 +346,8 @@ i {
 %>
 
 <%
-	System.out.println("on userdashboard page");
 
+6
 	String voter_id=(String)session.getAttribute("voter_id");
  	System.out.println(voter_id);
  	useroperations us=new useroperations();
