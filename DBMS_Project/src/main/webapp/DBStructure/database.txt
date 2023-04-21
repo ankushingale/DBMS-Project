@@ -61,5 +61,11 @@ create table votingstatus
 	time_date varchar(255)
 );
 
+create table finalresult
+(
+	candidate_name varchar(255),
+	candidate_party varchar(255),
+	total_votes int
+);
 
 

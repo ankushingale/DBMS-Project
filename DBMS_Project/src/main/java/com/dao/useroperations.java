@@ -18,6 +18,7 @@ public class useroperations {
 	ResultSet rs=null;
 	ResultSet rs1=null;
 	int i=0;
+	adminoperations aop=new adminoperations();
 	public int voter_registration(Voterregistration vtr)
 	{
 		con=Dbconnection.getConnection();
@@ -93,7 +94,6 @@ public class useroperations {
 					ps.setString(4,"1");
 //					System.out.println("Heklo");
 					i=ps.executeUpdate();
-					
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -209,6 +209,9 @@ public class useroperations {
 						ps.setString(5, getDate());
 //				System.out.println("Heklo");
 						i=ps.executeUpdate();
+						
+						aop.fetchresult();
+
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

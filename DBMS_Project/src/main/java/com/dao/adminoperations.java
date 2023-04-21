@@ -7,12 +7,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.model.CandidateModel1;
+import com.model.Finalresult;
 import com.model.partymodel;
 
 public class adminoperations {
-	
+	int i=0;
 	PreparedStatement ps=null;
 	ResultSet rs=null;
+	Statement st=null;
 	public ResultSet displayvoters()
 	{
 		Connection con= Dbconnection.getConnection();
@@ -391,7 +393,243 @@ public class adminoperations {
 		return rs;
 	}
 		 
+	public ResultSet votingCountDistinct()
+	{
+		Connection con=Dbconnection.getConnection();
+		try {
+			String query="select DISTINCT politician_party from votingstatus";
+			Statement st=con.createStatement();
+			rs=st.executeQuery(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return rs;
+	}
+		 
+public ResultSet getVoteCount(String party)
+{
+	Connection con=Dbconnection.getConnection();
+	try {
+		PreparedStatement ps=con.prepareStatement("select * from votingstatus where politician_party=?");
+		ps.setString(1,party);
+		
+		rs=ps.executeQuery();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	return rs;
+}
 
+public ResultSet getCandidateName(String candidate_name)
+{
+	Connection con=Dbconnection.getConnection();
+	try {
+		PreparedStatement ps=con.prepareStatement("select candidate_name,candidate_party from candidates where candidate_party=?");
+		ps.setString(1,candidate_name);
+		
+		rs=ps.executeQuery();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	return rs;
+}
+
+
+public int insertIntoResult(Finalresult fn)
+{
+
+	rs=checkDataPresent(fn.getCandidate_name(),fn.getParty_name());
+	try {
+		if(rs.next())
+		{
+			Connection con=Dbconnection.getConnection();
+			ps=con.prepareStatement("update finalresult set total_votes=total_votes+1 where candidate_name=? and candidate_party=?");
+			ps.setString(1,fn.getCandidate_name());
+			ps.setString(2,fn.getParty_name());
+			
+			i=ps.executeUpdate();
+		}
+		else
+		{
+			Connection con=Dbconnection.getConnection();
+			ps=con.prepareStatement("insert into finalresult values(?,?,?)");
+			ps.setString(1,fn.getCandidate_name());
+			ps.setString(2,fn.getParty_name());
+			ps.setInt(3,fn.getVoting_count());
+			
+			i=ps.executeUpdate();
+			
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return i;
+}
+public ResultSet checkDataPresent(String cname,String cparty)
+{
+	Connection con=Dbconnection.getConnection();
+	
+	try {
+		ps=con.prepareStatement("select * from finalresult where candidate_name=? and candidate_party=?");
+		ps.setString(1, cname);
+		ps.setString(2, cparty);
+		
+		rs=ps.executeQuery();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	return rs;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//public int insertIntoResult(Finalresult fn)
+//{
+//	Connection con=Dbconnection.getConnection();
+//
+//	ResultSet rs10=null;
+//	int i=0;
+//	try {
+//		rs10=displayFinalResult(fn.getCandidate_name(),fn.getParty_name());
+//
+//		if(rs10.next())
+//		{
+//			System.out.println("candidate name"+fn.getCandidate_name()+"\t"+fn.getParty_name());
+//			i=incrementVote(fn.getCandidate_name(),fn.getParty_name());
+//		}
+//		else{
+//			
+//			try {
+//				System.out.println("Inside else");
+//				ps=con.prepareStatement("insert into finalresult values(?,?,?)");
+//				ps.setString(1,fn.getCandidate_name());
+//				ps.setString(2,fn.getParty_name());
+//				ps.setInt(3,fn.getVoting_count());
+//				
+//				i=ps.executeUpdate();
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			
+//		}
+//	} catch (SQLException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
+//	
+//	
+//	return i;
+//}
+
+public ResultSet displayFinalResult(String cname,String cparty)
+{	
+	System.out.println("Inaisw ra0");
+	Connection con=Dbconnection.getConnection();
+	ResultSet rs=null;
+	
+	try {
+		ps=con.prepareStatement("select * from finalresult where candidate_name=? and candidate_party=?");
+		ps.setString(1,cname);
+		ps.setString(2, cparty);
+		rs=ps.executeQuery();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	return rs;
+}
+
+public ResultSet displayFinalResult1()
+{
+	String query="select * from finalresult";
+	Connection con=Dbconnection.getConnection();
+	
+	try {
+		st=con.createStatement();
+		rs=st.executeQuery(query);
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	return rs;
+}
+
+public int incrementVote(String cname,String cparty)
+{
+	Connection con=Dbconnection.getConnection();
+	try {
+		
+		System.out.println("Inside update of candidate");
+		ps=con.prepareStatement("update finalresult set total_votes=total_votes+1 where candidate_name=? and candidate_party=?");
+		ps.setString(1,cname);
+		ps.setString(2, cparty);
+		i=ps.executeUpdate();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return i;
+}
+
+public void fetchresult()
+{
+	int cnt=0;
+  	adminoperations aop=new adminoperations();
+  	ResultSet rs= aop.votingCountDistinct();
+  	try {
+  		
+  	
+  	while(rs.next()) 	//Execute for 3 times
+  	{
+  		Finalresult fn=null;
+  		ResultSet rs3=aop.getCandidateName(rs.getString(1));
+  		cnt=0;
+  		ResultSet rs2=aop.getVoteCount(rs.getString(1));	//D3
+  		
+  			while(rs2.next())		//Execute for 2 times
+  	  	  	{
+  	  	  		cnt++;
+  	  	  	}
+  	  		if(rs3.next())
+  	  		{
+  	  	  	System.out.println(rs3.getString(1)+"\t"+rs3.getString(2)+"\t"+cnt);
+  	  	  	fn=new Finalresult(rs3.getString(1),rs3.getString(2),cnt);
+  	  	 	int i=aop.insertIntoResult(fn);
+  	  	 	fn=null;
+  	  		}
+  	  
+  	  	
+
+  		}  	  	
+  	}catch (Exception e) {
+  		System.out.println(e);	
+  		}
+  	 
+
+}
 }
 		
 	

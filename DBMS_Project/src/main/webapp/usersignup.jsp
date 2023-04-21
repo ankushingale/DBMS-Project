@@ -205,7 +205,7 @@ margin-right:15px;
        
 
         <div class="input-field">
-            <input type="number" class="input" placeholder="Adhar_Card no" name="Adhar_Card no" id="input-field" required>
+            <input type="number" class="input" placeholder="Adhar_Card no"  name="Adhar_Card no" id="input-field" required>
             <i class='bx bx-id-card'></i>
         </div>
 

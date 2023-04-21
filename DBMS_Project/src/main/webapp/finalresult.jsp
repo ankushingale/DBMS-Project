@@ -1,3 +1,6 @@
+<%@page import="com.model.Finalresult"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="com.dao.adminoperations"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -248,7 +251,18 @@ h1{
 <body>
     <div class="header">
         <div class="side-nav">
-            <h2 style="color: aliceblue;">count : 000</h2>
+         <%
+    	int cnt1=0;
+
+        	adminoperations aop1=new adminoperations();
+        	ResultSet rs1=aop1.votingCount();
+		while(rs1.next())
+		{
+			cnt1++;
+		}
+        	
+        %>
+            <h2 style="color: aliceblue;">count : <%=cnt1 %></h2>
         </div>
         <ul class="nav-link">
 
@@ -266,6 +280,9 @@ h1{
 
 
 <div class="heading1">Result</div>
+  <%  		
+  	  
+  %>
     
       </div>
     <div class="box1">
@@ -273,18 +290,30 @@ h1{
     <table class="table" id="tbl_exporttable_to_xls"> 
         
         <tr>
-            <th>sr</th>
+            <th>Sr.NO</th>
             <th>candidate</th> 
             <th>party</th>
             <th>voting count</th>
         </tr>
         <tr> 
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
+        <%
+        	int cnt=1;
+        	adminoperations aop=new adminoperations(); 
+        	ResultSet rs4=aop.displayFinalResult1();
+        	while(rs4.next())
+        	{
+        		
+        	%>
+            <td><%=cnt %></td>
+            <td><%=rs4.getString(1) %></td>
+            <td><%=rs4.getString(2) %></td>
+            <td><%=rs4.getInt(3)%></td>
         
         </tr>
+        <%
+        cnt++;
+        	}
+            %>
            </table> 
     <div class="result-btn">
     <div class="save-btn1"><input type="button" value="download pdf" id="btnExport" onclick="Export()"  class="btn11"></div>
