@@ -248,7 +248,7 @@ h1{
             <h2 style="color: aliceblue;">count : <%=cnt1 %></h2>
         </div>
         <ul class="nav-link">
-             <li><a href="admindashboard.jsp" target="_self"><i class='bx bx-home-alt'></i><p>Dashboard</p></a></li>
+            <li><a href="admindashboard.jsp" target="_self"><i class='bx bx-home-alt'></i><p>Dashboard</p></a></li>
             <li><a href="registration.jsp" target="_self"><i class='bx bx-registered'></i><p>Registrations</p></a></li>
             <li><a href="cnadidate.jsp" target="_self"><i class='bx bx-user-circle'></i></i><p>Candidate</p></a></li>
             <li><a href="live-user.jsp" target="_self"><i class='bx bx-user-check'></i></i><p>Live_users</p></a></li>
@@ -256,7 +256,7 @@ h1{
             <li><a href="result.jsp" target="_self"><i class='bx bx-line-chart'></i></i><p>voting_status</p></a></li>
             <li><a href="finalresult.jsp"><i class='bx bx-party'></i><p>Result</p></a></li> 
            
-            <div class="active"></div>       
+                       <div class="active"></div>       
         </ul>
     </div>
 
