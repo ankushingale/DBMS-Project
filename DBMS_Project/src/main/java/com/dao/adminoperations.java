@@ -135,8 +135,9 @@ public class adminoperations {
 	public int deleteParty(String party_id)
 	{
 		Connection con=Dbconnection.getConnection();
-		System.out.println("Inside dlete");
-		int i=0;
+		/*
+		 * System.out.println("Inside dlete");
+		 */		int i=0;
 		try {
 			PreparedStatement ps=con.prepareStatement("delete from parties where p_id=?");
 			ps.setString(1, party_id);
@@ -233,8 +234,9 @@ public class adminoperations {
 	public int deleteCandidate(String candidate_id)
 	{
 		Connection con=Dbconnection.getConnection();
-		System.out.println("Inside dlete");
-		int i=0;
+		/*
+		 * System.out.println("Inside dlete");
+		 */		int i=0;
 		try {
 			PreparedStatement ps=con.prepareStatement("delete from candidates where candidate_id=?");
 			ps.setString(1, candidate_id);
@@ -282,8 +284,9 @@ public class adminoperations {
 			}
 			else
 			{
-				System.out.println("inside insertupdatedparty");
-				Connection con=Dbconnection.getConnection();
+				/*
+				 * System.out.println("inside insertupdatedparty");
+				 */				Connection con=Dbconnection.getConnection();
 				try {
 					PreparedStatement ps=con.prepareStatement("update parties set p_id=?,p_name=?,p_leader=?,p_type=?,active_members=?,est_date=?,Head_quarters=? where p_id=?" );
 					
@@ -337,8 +340,9 @@ public class adminoperations {
 	public int insertupdatedcandidte(CandidateModel1 pm)
 	{
 			int i=0;
-		System.out.println("inside insertupdatcandidate");
-				Connection con=Dbconnection.getConnection();
+			/*
+			 * System.out.println("inside insertupdatcandidate");
+			 */				Connection con=Dbconnection.getConnection();
 				try {
 					PreparedStatement ps=con.prepareStatement("update candidates set candidate_name=?,candidate_Aadhar=?,candidate_party=?,candidate_phone=?,candidate_age=?,candidate_gender=?,candidate_address=? where candidate_id=?" );
 					
@@ -395,11 +399,13 @@ public class adminoperations {
 		 
 	public ResultSet votingCountDistinct()
 	{
+//		int cnt=1;
 		Connection con=Dbconnection.getConnection();
 		try {
-			String query="select DISTINCT politician_party from votingstatus";
+			String query="SELECT politician_party FROM votingstatus WHERE time_date=(SELECT MAX(time_date) FROM votingstatus);";
 			Statement st=con.createStatement();
 			rs=st.executeQuery(query);
+//			cnt=cnt+1;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -444,19 +450,23 @@ public ResultSet getCandidateName(String candidate_name)
 public int insertIntoResult(Finalresult fn)
 {
 
-	rs=checkDataPresent(fn.getCandidate_name(),fn.getParty_name());
+	ResultSet rs=checkDataPresent(fn.getCandidate_name(),fn.getParty_name());
 	try {
 		if(rs.next())
 		{
+			System.out.println("Inside Update");
 			Connection con=Dbconnection.getConnection();
-			ps=con.prepareStatement("update finalresult set total_votes=total_votes+1 where candidate_name=? and candidate_party=?");
+			System.out.println(fn.getCandidate_name()+"\t"+fn.getParty_name());
+			PreparedStatement ps=con.prepareStatement("update finalresult set total_votes=total_votes+1 where candidate_name=? and candidate_party=?");
 			ps.setString(1,fn.getCandidate_name());
 			ps.setString(2,fn.getParty_name());
-			
 			i=ps.executeUpdate();
+			
+			
 		}
 		else
 		{
+			System.out.println("Inside else of insert data");
 			Connection con=Dbconnection.getConnection();
 			ps=con.prepareStatement("insert into finalresult values(?,?,?)");
 			ps.setString(1,fn.getCandidate_name());
@@ -474,6 +484,8 @@ public int insertIntoResult(Finalresult fn)
 }
 public ResultSet checkDataPresent(String cname,String cparty)
 {
+	ResultSet rs=null;
+	System.out.println("Inside checkDataPresent method"+cname+"\t"+cparty);
 	Connection con=Dbconnection.getConnection();
 	
 	try {
@@ -544,8 +556,9 @@ public ResultSet checkDataPresent(String cname,String cparty)
 
 public ResultSet displayFinalResult(String cname,String cparty)
 {	
-	System.out.println("Inaisw ra0");
-	Connection con=Dbconnection.getConnection();
+	/*
+	 * System.out.println("Inaisw ra0");
+	 */	Connection con=Dbconnection.getConnection();
 	ResultSet rs=null;
 	
 	try {
@@ -563,7 +576,7 @@ public ResultSet displayFinalResult(String cname,String cparty)
 
 public ResultSet displayFinalResult1()
 {
-	String query="select * from finalresult";
+	String query="select * from finalresult order by total_votes desc";
 	Connection con=Dbconnection.getConnection();
 	
 	try {
@@ -577,22 +590,25 @@ public ResultSet displayFinalResult1()
 	return rs;
 }
 
-public int incrementVote(String cname,String cparty)
-{
-	Connection con=Dbconnection.getConnection();
-	try {
-		
-		System.out.println("Inside update of candidate");
-		ps=con.prepareStatement("update finalresult set total_votes=total_votes+1 where candidate_name=? and candidate_party=?");
-		ps.setString(1,cname);
-		ps.setString(2, cparty);
-		i=ps.executeUpdate();
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	return i;
-}
+//public int incrementVote(String cname,String cparty)
+//{
+//	Connection con=Dbconnection.getConnection();
+//	try {
+//		
+//		/*
+//		 * System.out.println("Inside update of candidate");
+//		 */		ps=con.prepareStatement("update finalresult set total_votes=total_votes+1 where candidate_name=? and candidate_party=?");
+//		ps.setString(1,cname);
+//		ps.setString(2, cparty);
+//		i=ps.executeUpdate();
+//		
+//		
+//	} catch (SQLException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
+//	return i;
+//}
 
 public void fetchresult()
 {
@@ -618,7 +634,11 @@ public void fetchresult()
   	  	  	System.out.println(rs3.getString(1)+"\t"+rs3.getString(2)+"\t"+cnt);
   	  	  	fn=new Finalresult(rs3.getString(1),rs3.getString(2),cnt);
   	  	 	int i=aop.insertIntoResult(fn);
-  	  	 	fn=null;
+  	  	 	
+  	  	 	fn.setCandidate_name("");
+  	  	 	fn.setParty_name("");
+  	  	 	
+  	  	 	
   	  		}
   	  
   	  	

@@ -143,8 +143,9 @@ public class useroperations {
 			
 			con=Dbconnection.getConnection();
 
-			System.out.println("inside displayUserData");
-			System.out.println(voter_id);
+			/*
+			 * System.out.println("inside displayUserData");
+			 */			System.out.println(voter_id);
 			
 			try {
 				PreparedStatement ps=con.prepareStatement("select * from voter_Registration_Details where voter_id=?");
@@ -154,12 +155,14 @@ public class useroperations {
 				
 				if(rs1.next())
 				{
-					System.out.println("data is present");
-				}
+					/*
+					 * System.out.println("data is present");
+					 */				}
 				else
 				{
-					System.out.println("No data");
-				}
+					/*
+					 * System.out.println("No data");
+					 */				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -215,7 +215,35 @@ table {
     flex-direction: column;
 
 }
+.result-btn{
+    display: flex;
+    
 
+}
+.btn11{
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    height: 40px;
+    outline: none;
+    width:140px;
+    color: black;
+    background: rgba(255,255,255,0.7);
+    cursor: pointer;
+    transition: .3s ;
+    margin: 0;
+    padding: 0;
+}
+.btn11:hover{
+    box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+}
+.save-btn1{
+    margin-top: 36px;
+    margin-left: 100px;
+}
+.save-btn{
+    margin-left: 10px;
+}
 h1{
     font-size: 70px;
     /* margin:0;
@@ -229,6 +257,7 @@ h1{
     transform:translateX(-50%)translateY(-50%);
     color:a liceblue;
 }
+
 </style>
 <meta charset="ISO-8859-1">
 
@@ -310,8 +339,8 @@ function ExportToExcel(type, fn, dl) {
 
 		if(updatesuccess=="true")
 		{
-			System.out.println("Inside update");
-			%>
+/* 			System.out.println("Inside update");
+ */			%>
 			<script type="text/javascript">
 		
      						Swal.fire({
@@ -333,8 +362,8 @@ function ExportToExcel(type, fn, dl) {
 
 		if(updatesuccess=="false")
 		{
-			System.out.println("Inside update");
-			%>
+/* 			System.out.println("Inside update");
+ */			%>
 			<script type="text/javascript">
 		
      						Swal.fire({
@@ -407,8 +436,10 @@ function ExportToExcel(type, fn, dl) {
            </table> 
     
     <div class="save-btn"><a href="candidate-sign-up.jsp"> <input type="submit" value="Add Candidate" class="btn1"></a></div>
-        <div class="save-btn"><input type="submit" value="download" id="btnExport" onclick="ExportToExcel()" title="Pdf" class="btn1"></div>
-    
+ <div class="result-btn">
+    <div class="save-btn1"><input type="button" value="download pdf" id="btnExport" onclick="Export()"  class="btn11"></div>
+    <div class="save-btn"><input type="button" value="download excel" id="btnExport" onclick="ExportToExcel()" class="btn11"></div>
+       
      <script type="text/javascript">
     function Export() {
     	

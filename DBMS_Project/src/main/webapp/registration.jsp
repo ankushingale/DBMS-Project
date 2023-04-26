@@ -72,6 +72,36 @@ body{
     font-size: 22px;
     margin-right: 20px;
 }
+.result-btn{
+    display: flex;
+    
+
+}
+.btn11{
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    height: 40px;
+    outline: none;
+    width:140px;
+    color: black;
+    background: rgba(255,255,255,0.7);
+    cursor: pointer;
+    transition: .3s ;
+    margin: 0;
+    padding: 0;
+}
+
+.btn11:hover{
+    box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+}
+.save-btn1{
+    margin-top: 36px;
+    margin-left: 100px;
+}
+.save-btn{
+    margin-left: 10px;
+}
 /* .active{
     
     width: 204px;
@@ -254,9 +284,7 @@ function ExportToExcel(type, fn, dl) {
             <li><a href="partys.jsp" target="_self"><i class='bx bx-group'></i><p>Party's</p></a></li>
             <li><a href="result.jsp" target="_self"><i class='bx bx-line-chart'></i></i><p>voting_status</p></a></li>
             <li><a href="finalresult.jsp"><i class='bx bx-party'></i><p>Result</p></a></li> 
-                        <li><a href="result.jsp"><i class='bx bx-party'></i><p>Voting Status</p></a></li>
             
-            <li><a href="result.jsp"><i class='bx bx-party'></i><p>Result</p></a></li>  
             <div class="active"></div>       
         </ul>
     </div>
@@ -358,7 +386,9 @@ function ExportToExcel(type, fn, dl) {
         </tr>  -->
     </table> 
     
-    <div class="save-btn"><input type="submit" value="download" id="btnExport" onclick="Export()" title="Pdf" class="btn1"></div>
+<div class="result-btn">
+    <div class="save-btn1"><input type="button" value="download pdf" id="btnExport" onclick="Export()"  class="btn11"></div>
+    <div class="save-btn"><input type="button" value="download excel" id="btnExport" onclick="ExportToExcel()" class="btn11"></div>
     <script type="text/javascript">
     function Export() {
     	

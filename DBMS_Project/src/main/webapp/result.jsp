@@ -241,7 +241,21 @@ h1{
 .save-btn{
     margin-left: 10px;
 }
+
+
+
 </style>
+<script type="text/javascript">
+function ExportToExcel(type, fn, dl) {
+	console.log("Hello in excel")
+       var elt = document.getElementById('tbl_exporttable_to_xls');
+       var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+       return dl ?
+         XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
+         XLSX.writeFile(wb, fn || ('Voting Status.' + (type || 'xlsx')));
+    }
+</script>
+
 <meta charset="ISO-8859-1">
 
 <title>Admin | Dashboard</title>
@@ -277,7 +291,7 @@ h1{
     </div>
 
 
-<div class="heading1">Result</div>
+<div class="heading1">Voting Status</div>
     
       </div>
     <div class="box1">
@@ -316,7 +330,7 @@ h1{
     </table> 
     <div class="result-btn">
     <div class="save-btn1"><input type="button" value="download pdf" id="btnExport" onclick="Export()"  class="btn11"></div>
-    <div class="save-btn"><input type="button" value="download excel" class="btn11"></div>
+    <div class="save-btn"><input type="button" value="download excel" id="btnExport" onclick="ExportToExcel()" class="btn11"></div>
     <script type="text/javascript">
     function Export() {
     	
@@ -330,7 +344,7 @@ h1{
                         width: 500
                     }]
                 };
-                pdfMake.createPdf(docDefinition).download("Candidate Details.pdf");
+                pdfMake.createPdf(docDefinition).download("Voting Status.pdf");
             }
         });
     }

@@ -46,15 +46,17 @@ public class votingcontroller extends HttpServlet {
 			HttpSession session=request.getSession();
 			session.setAttribute("vote-success", "true");
 			response.sendRedirect("votingpanel.jsp");
-			System.out.println("succcess");
-		}
+			/*
+			 * System.out.println("succcess");
+			 */		}
 		else
 		{
 			HttpSession session=request.getSession();
 			session.setAttribute("vote-fail", "true");
 			response.sendRedirect("votingpanel.jsp");
-			System.out.println("Fail");
-		}
+			/*
+			 * System.out.println("Fail");
+			 */		}
 
 		
 	}

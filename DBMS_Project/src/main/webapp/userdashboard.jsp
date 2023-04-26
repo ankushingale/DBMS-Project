@@ -272,15 +272,7 @@ i {
 
 </head>
 <body>
-     <%
-	System.out.println("on userdashboard page");
-
-	String voter_id=(String)session.getAttribute("voter_id");
- 	System.out.println(voter_id);
- 	useroperations us=new useroperations();
-	ResultSet rs=us.displayData(voter_id);
-	
-	%>
+   
     <header>
  
         <img class="logo" src="./images/logo.svg" alt="">
@@ -298,6 +290,12 @@ i {
        		 <a href="sign_up.jsp" class="cta" style="margin-left: 50px"><button>user login</button></a>
  -->        
         </nav>
+          <%
+	String voter_id=(String)session.getAttribute("voter_id");
+  	useroperations us=new useroperations();
+	ResultSet rs=us.displayData(voter_id);
+	
+	%>
         <div class="btncon">
         <div class="btncon1">
         <a href="votingpanel.jsp" class="cta"><input type="submit" class="submit2" value="Vote" id=""></a>
