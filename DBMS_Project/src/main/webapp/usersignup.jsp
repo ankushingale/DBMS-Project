@@ -9,7 +9,9 @@
      <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
      
- 
+ <script
+  src="https://code.jquery.com/jquery-3.6.4.min.js"integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+  crossorigin="anonymous"></script>
      <title>Login</title>
      <script>
          function togglePassword2() {
@@ -40,7 +42,37 @@
         }
       </script>
      
-     
+     <script>        
+           function phoneno(){  
+        	   console.log('Inside fun')
+            $('#phone').keypress(function(e) {
+                var a = [];
+                var k = e.which;
+
+                for (i = 48; i < 58; i++)
+                    a.push(i);
+
+                if (!(a.indexOf(k)>=0))
+                    e.preventDefault();
+            });
+        }
+       </script>
+       
+        <script>        
+           function phoneno1(){  
+        	   console.log('Inside fun')
+            $('#phone1').keypress(function(e) {
+                var a = [];
+                var k = e.which;
+
+                for (i = 48; i < 58; i++)
+                    a.push(i);
+
+                if (!(a.indexOf(k)>=0))
+                    e.preventDefault();
+            });
+        }
+       </script>
       <style>
       body{
      background-color:cadetblue;
@@ -205,13 +237,13 @@ margin-right:15px;
        
 
         <div class="input-field">
-            <input type="number" class="input" placeholder="Adhar_Card no"  name="Adhar_Card no" id="input-field" required>
+            <input type="text" class="input" placeholder="Adhar_Card no"  name="Adhar_Card no" id="phone" onkeypress="phoneno()" maxlength="12" required>
             <i class='bx bx-id-card'></i>
         </div>
 
         
         <div class="input-field">
-           <input type="number" class="input" placeholder="phone no" name="phone no" id="input-field1" required>
+           <input type="text" class="input" placeholder="phone no"  name="phone no" id="phone1"   onkeypress="phoneno1()" maxlength="10" required>
           <i class='bx bx-mobile-alt'></i> 
        </div>
       
@@ -282,5 +314,7 @@ margin-right:15px;
      <input type="submit" class="submit1" value="sign up" id="" required>
     </div>
    </form>
+   
+   
      </body>
  </html>

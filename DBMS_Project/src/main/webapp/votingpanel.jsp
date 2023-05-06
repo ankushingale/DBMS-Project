@@ -158,7 +158,7 @@ table {
    							
 <% 
 
-session.removeAttribute("vote-success");
+session.removeAttribute("vote-success"	);
 
 		}
 
