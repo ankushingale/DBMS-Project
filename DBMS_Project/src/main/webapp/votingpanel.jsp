@@ -221,11 +221,7 @@ session.removeAttribute("vote-success"	);
 useroperations us=new useroperations();
 
 	String voter_id=(String)session.getAttribute("voter_id");
-/* 	System.out.println("session value is :"+voter_id);
- */	ResultSet rs1=us.displayData(voter_id);
-/* 	String voter_id=rs1.getString(1);
-
- */	
+	ResultSet rs1=us.displayData(voter_id);
  	String voter_id1=rs1.getString(1);
 	String voter_name=rs1.getString(2);
 
